@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, onBeforeUnmount } from "vue";
+import Navbar from "./components/Navbar.vue";
 
 function generateStars(count, id) {
   const stars = [];
@@ -14,7 +15,7 @@ function generateStars(count, id) {
   if (el) el.style.boxShadow = stars.join(", ");
 }
 
-// build once and on resize (debounced)
+// build once and on resize (debouncnaed)
 let resizeTimer = null;
 function build() {
   generateStars(300, "stars");  // small
@@ -40,26 +41,46 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div id="background-layer"></div>
-  <div id="stars" aria-hidden="true"></div>
-  <div id="stars2" aria-hidden="true"></div>
-  <div id="stars3" aria-hidden="true"></div>
-  <!-- Your app content (router-view) -->
-  <router-view />
+  <div class="app-root">
+    <div class="grid-pattern"></div>
+    <div class="background-blur-cover">
+      <div id="background-layer"></div>
+      <div id="stars" aria-hidden="true"></div>
+      <div id="stars2" aria-hidden="true"></div>
+      <div id="stars3" aria-hidden="true"></div>
+    </div>
+    <Navbar/>
+    <router-view/>
+  </div>
 </template>
 
 <style>
-#background-layer {
-  position: fixed;
-  inset: 0;
-  z-index: 0; /* BELOW STARS */
-  background: radial-gradient(ellipse at bottom, #2a3e4f 0%, #182232 100%);
+
+.app-root {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
 }
+
+.grid-pattern {
+  position: fixed;
+  inset: 0;   /* send behind everything */
+  pointer-events: none;  /* make it CLICK-through */
+  
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+.background-blur-cover {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+}
+
 /* Global star layers: fixed, behind all content, pointer-events none */
 #stars, #stars2, #stars3 {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  z-index: 1;
   pointer-events: none;
   will-change: transform;
   filter: contrast(99.9%);

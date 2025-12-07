@@ -1,321 +1,674 @@
 <template>
- <section
-  class="about-section h-screen w-screen relative overflow-hidden "
->
-  <div class="mx-auto w-full h-full grid lg:grid-cols-5">
+  <section id="about" class="about-section relative pt-10 pb-5 overflow-hidden">
 
-    <!-- LEFT SIDE -->
-    <div class="lg:col-span-3 flex flex-col justify-center">
+    <div class="about-background">
+      <div class="gradient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+      </div>
+    </div>
+    
+    <div class="about-title px-5 sm:px-10">
+      <div class="title-left">
 
-      <!-- Header -->
-      <div class="space-y-1">
-        <span class="bg-accent/10 border-accent/20 px-2 py-0.5 rounded text-[11px]">
-          🚀 Full Stack Developer
-        </span>
+        <div class="section-badge">
+          <VueFeather type="code" stroke="green" size="14" />
+          Full Stack Developer
+        </div>
 
-        <h1 class="leading-tight text-[2.2rem]">
-          Hi, I'm <span class="text-gradient">Chun Visal</span>
+        <h1 class="main-title">
+          <span class="greeting">Hi, I'm </span>
+          <span class="name">Chun Visal</span>
         </h1>
 
-        <p class="text-[0.8rem] opacity-80">
-          Crafting digital experiences that matter
+        <p class="tagline">
+          "Crafting digital experiences that matter"
         </p>
+
       </div>
 
-      <!-- ABOUT SECTIONS -->
-      <div class="space-y-1">
-        <div v-for="(item, i) in aboutSections" :key="i" class="space-y-0.5">
-          <h2 class="flex items-center gap-1 text-[0.9rem]">
-            <span class="text-accent text-[12px]">→</span> {{ item.title }}
-          </h2>
-          <p class="text-[0.75rem] leading-snug" v-html="item.text"></p>
+      <!-- image for mobile -->
+       <div class="title-right block sm:hidden">
+       <div class="swap-wrapper">
+          <transition name="fade">
+            <!-- use currentIndex as key so Vue always transitions -->
+            <img
+              :src="hobbies[currentIndex]"
+              :key="currentIndex"
+              class="swap-image"
+              alt="hobby"
+              @click="openImage(hobbies[currentIndex])"
+            />
+          </transition>
         </div>
-      </div>
+       </div>
+    </div>  
 
-      <!-- HOBBIES -->
-      <div class="space-y-0.5">
-        <h2 class="flex items-center gap-1 text-[0.9rem]">
-          <span class="text-accent text-[12px]">→</span> Interests
-        </h2>
+    <!-- CENTERED CONTAINER -->
+    <div class="about-container flex flex-col px-5 sm:px-10 sm:flex-row gap-3 sm:gap-10">
+      
+      <!-- LEFT COLUMN -->
+      <div class="left-col">
 
-        <div class="hobby-wrapper h-[45px]">
-          <div class="hobby-track">
-            <div class="hobby-item w-[70px] h-[45px]"
-                 v-for="(hobby, i) in duplicatedHobbies"
-                 :key="i">
-              <img :src="hobby.img" :alt="hobby.alt" />
+        <div class="about-left">
+
+          <div class="content-section">
+            <h2 class="section-header">What I Do</h2>
+            <div class="section-content">
+              I'm a fast-learning full-stack developer in training. I build
+              <span>high-performance web applications</span>, clean UI and functional APIs.
+              I learn by building — trying ideas, breaking things, and fixing them again.
+              Every project moves me closer to the developer I want to become.
             </div>
           </div>
-        </div>
-      </div>
 
-    </div>
-
-    <!-- RIGHT SIDE -->
-    <div class="lg:col-span-2 flex flex-col justify-center space-y-2">
-
-      <!-- CODE BLOCK -->
-      <div class="card-soft p-2">
-        <div class="space-y-1">
-          <div class="flex items-center gap-1 mb-1">
-            <div class="w-1.5 h-1.5 rounded-full bg-red-500"></div>
-            <div class="w-1.5 h-1.5 rounded-full bg-yellow-500"></div>
-            <div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-            <span class="text-[10px] ml-1">developer.ts</span>
-          </div>
-
-          <div class="font-mono space-y-0.5">
-            <div
-              v-for="(line, i) in codeLines"
-              :key="i"
-              :class="[
-                'text-[10px] text-white transition-all',
-                i === activeLineIndex ? 'text-accent scale-[1.03] translate-x-1' : 'opacity-75'
-              ]"
-            >
-              {{ line }}
+          <div class="content-section">
+            <h2 class="section-header">My Approach</h2>
+            <div class="section-content">
+              Write simple, readable code and solve problems step by step.
+              Care about design, performance, and improving every single day.
+              If <span>I don't know something, I learn it quick</span>.
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- SKILLS -->
-      <div class="card-soft p-3 bg-card/40 space-y-2">
-        <h2 class="text-[0.9rem]">Tech Arsenal</h2>
-
-        <div
-          v-for="(group, i) in skills"
-          :key="group.category"
-          class="space-y-1"
-          :style="{ animationDelay: i * 0.05 + 's' }"
-        >
-          <h3 class="teach-stack flex items-center gap-1 uppercase text-[0.65rem]">
-            <span class="w-1 h-1 rounded-full bg-accent"></span>
-            {{ group.category }}
-          </h3>
-
-          <div class="flex flex-wrap gap-1">
-            <span
-              v-for="skill in group.items"
-              :key="skill"
-              class="px-2 py-2px bg-secondary/20 rounded text-[10px]"
-            >
-              {{ skill }}
-            </span>
+          <div class="content-section">
+            <h2 class="section-header">Beyond Code</h2>
+            <div class="section-content">
+              I vibe with tech, cars, gaming, and leveling up my skills nonstop.
+              Building projects, experimenting, breaking things,
+              <span>fixing them daily</span>.
+            </div>
           </div>
-        </div>
-      </div>
 
-      <!-- STATS -->
-      <div class="grid grid-cols-4 gap-1">
-        <div
-          v-for="stat in stats"
-          :key="stat.label"
-          class="card-soft p-2 text-center"
-        >
-          <div class="text-gradient text-[0.9rem] font-bold leading-none">
-            {{ stat.value }}
+          <div class="content-section hidden sm:block">
+            <h2 class="section-header">Hobbies & Interests</h2>
+            <div class="hobbies-scroll-wrapper">
+              <div class="hobbies-grid">
+                  <div class="hobby-item" v-for="(img, index) in hobbies" :key="'h1-'+index" @click="openImage(img)">
+                    <img :src="img" alt="">
+                  </div>
+                  <div class="hobby-item" v-for="(img, index) in hobbies" :key="'h2-'+index" @click="openImage(img)">
+                    <img :src="img" alt="">
+                  </div>
+                </div>
+            </div>
+            </div>
           </div>
-          <div class="text-[0.55rem] opacity-70">{{ stat.label }}</div>
+
+         <div class="viewer" v-if="viewerImg" @click="viewerImg = null">
+            <img :src="viewerImg" class="viewer-img" />
+          </div>
+
+        </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="right-col">
+
+        <div class="content-section">
+  <h2 class="section-header">Tech Arsenal</h2>
+
+  <div class="tech-grid">
+
+    <div class="tech-category">
+      <div class="tech-category-header">Frontend</div>
+      <div class="tech-items">
+        <div class="tech-item">
+          <font-awesome-icon :icon="['fab', 'html5']" size="sm" :style="{ color: '#e34c26' }" />
+          HTML
+        </div>
+        <div class="tech-item">
+          <font-awesome-icon :icon="['fab', 'css3']" size="sm" :style="{ color: '#264de4' }" />
+          CSS
+        </div>
+        <div class="tech-item">
+          <font-awesome-icon :icon="['fab', 'vuejs']" size="sm" :style="{ color: '#42b883' }" />
+          Vue
+        </div>
+        <div class="tech-item">
+          <font-awesome-icon :icon="['fab', 'react']" size="sm" :style="{ color: '#61dafb' }" />
+          React
+        </div>
+        <div class="tech-item">
+          <font-awesome-icon :icon="['fab', 'js']" size="sm" :style="{ color: '#f7df1e' }" />
+          JavaScript
+        </div>
+        <div class="tech-item">
+          <font-awesome-icon :icon="['fas', 'wind']" size="sm" :style="{ color: '#38bdf8' }" />
+          Tailwind
         </div>
       </div>
-
+    </div>
+    <div class="tech-category">
+      <div class="tech-category-header">Backend</div>
+      <div class="tech-items">
+        <div class="tech-item">
+          <font-awesome-icon :icon="['fab', 'node-js']" size="sm" :style="{ color: '#68a063' }" />
+          Node.js
+        </div>
+        <div class="tech-item">
+          <font-awesome-icon :icon="['fas', 'server']" size="sm" :style="{ color: '#a855f7' }" />
+          Express
+        </div>
+        <div class="tech-item">
+          <font-awesome-icon :icon="['fas', 'database']" size="sm" :style="{ color: '#4ade80' }" />
+          SQL
+        </div>
+        <div class="tech-item">
+          <font-awesome-icon :icon="['fas', 'fire']" size="sm" :style="{ color: '#f97316' }" />
+          Firebase
+        </div>
+      </div>
     </div>
 
+
+   <div class="tech-category">
+      <div class="tech-category-header">Tools</div>
+      <div class="tech-items">
+        <div class="tech-item">
+          <font-awesome-icon :icon="['fas', 'bolt']" size="sm" :style="{ color: '#facc15' }" />
+          Postman
+        </div>
+        <div class="tech-item">
+          <font-awesome-icon :icon="['fas', 'code']" size="sm" :style="{ color: '#3b82f6' }" />
+          VS Code
+        </div>
+        <div class="tech-item">
+          <font-awesome-icon :icon="['fab', 'figma']" size="sm" :style="{ color: '#a855f7' }" />
+          Figma
+        </div>
+        <div class="tech-item">
+          <font-awesome-icon :icon="['fab', 'github']" size="sm" :style="{ color: '#fff' }" />
+          Git/Github
+        </div>
+      </div>
+    </div>
   </div>
-</section>
+</div>
 
+        <div class="stats-section">
+          <div class="stats-grid">
+
+            <div class="stat-item">
+              <div class="stat-number">0+</div>
+              <div class="stat-label">Experience</div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number">3+</div>
+              <div class="stat-label">Projects</div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number">ထ</div>
+              <div class="stat-label">Learning</div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Effort</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 </template>
 
+
 <script setup>
-import car from "../../public/hobbies/car.png";
-import coding from "../../public/hobbies/coding.png";
-import cybersecurity from "../../public/hobbies/cybersecurity.png";
-import fast from "../../public/hobbies/fastandfurious.png";
-import fortnite from "../../public/hobbies/fortnite.png";
-import gym from "../../public/hobbies/gym.png";
-import minecraft from "../../public/hobbies/minecraft.png";
-import music from "../../public/hobbies/music.png";
-import vscode from "../../public/hobbies/vscode.png";
-import visal from "../../public/hobbies/visal.jpg";
+  import { ref, onMounted, onBeforeUnmount } from 'vue';
 
-/* HOBBIES */
-const hobbies = [
-  { img: car, alt: "Car" },
-  { img: coding, alt: "Coding" },
-  { img: cybersecurity, alt: "Cybersecurity" },
-  { img: fast, alt: "Fast & Furious" },
-  { img: fortnite, alt: "Fortnite" },
-  { img: gym, alt: "Gym" },
-  { img: minecraft, alt: "Minecraft" },
-  { img: music, alt: "Music" },
-  { img: vscode, alt: "VS Code" },
-  { img: visal, alt: "Visal" }
-];
+  import car from '../../public/hobbies/car.png';
+  import coding from '../../public/hobbies/coding.png';
+  import cybersecurity from '../../public/hobbies/cybersecurity.png';
+  import fastandfurious from '../../public/hobbies/fastandfurious.png';
+  import fortnite from '../../public/hobbies/fortnite.png';
+  import gym from '../../public/hobbies/gym.png';
+  import minecraft from '../../public/hobbies/minecraft.png';
+  import music from '../../public/hobbies/music.png';
+  import visal from '../../public/hobbies/visal.jpg';
 
-const duplicatedHobbies = [...hobbies, ...hobbies, ...hobbies];
+  const hobbies = [
+    car,
+    coding,
+    cybersecurity,
+    fastandfurious,
+    fortnite, 
+    gym,
+    minecraft,
+    music,
+    visal
+  ];
 
-/* ABOUT TEXT BLOCKS */
-const aboutSections = [
-  {
-    title: "What I Do",
-    text: `I specialize in building <span class='text-accent'>high-performance web apps</span>.`
-  },
-  {
-    title: "My Approach",
-    text: `Clean code, fast systems, and <span class='text-accent'>constant improvement</span>.`
-  },
-  {
-    title: "Beyond Code",
-    text: `Gaming, hacking, VS Code mods, cars, and sharing knowledge.`
-  }
-];
+  const currentIndex = ref(0);
+  const viewerImg = ref(null);
+  let intervalId = null;
 
-/* SKILLS */
-const skills = [
-  { category: "Frontend", items: ["Vue", "React", "Tailwind", "TypeScript"] },
-  { category: "Backend", items: ["Node", "Python", "Express", "SQL"] },
-  { category: "DevOps", items: ["Docker", "CI/CD", "Linux"] }
-];
+  onMounted(() => {
+    setInterval(() => {
+      currentIndex.value = (currentIndex.value + 1) % hobbies.length;
+    }, 3000);
+  });
 
-/* CODE LINES */
-const codeLines = [
-  "const developer = {",
-  "  name: 'Visal',",
-  "  role: 'Full Stack Dev',",
-  "  passion: 'Building cool stuff',",
-  "  exp: 'No experience, but waiting to learning fast!',",
-  "};"
-];
+  onBeforeUnmount(() => {
+  if (intervalId) clearInterval(intervalId);
+});
 
-const activeLineIndex = 2;
+function openImage(img) {
+  viewerImg.value = img;
+}
 
-/* STATS */
-const stats = [
-  { value: "3+", label: "Years" },
-  { value: "10+", label: "Projects" },
-  { value: "∞", label: "Ideas" },
-  { value: "100%", label: "Passion" }
-];
 </script>
 
-<style scoped>
-/* Typography rules for this section ONLY */
-.about-section h1 {
-  font-size: 2.0.9rem;
-}
 
-.about-section h1 span {
-  background: linear-gradient(90deg, #6ee7b7 0%, #60a5fa 50%, #c7b3ff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  display: inline-block;
-  transition: filter 300ms ease, transform 300ms ease;
-  font: inherit;
-}
+<style>
 
-.about-section h2 {
-  font-size: 0.9rem; /* 16px */
-}
-
-.about-section span {
-  font-size: 13px;
-}
-
-.about-section p {
-  font-size: 0.7rem;
-}
-
-/* image scroll horizontal infinty repeact smooth */
-.hobby-wrapper {
-  width: 70%;
-  height: 50px;
+/* ---------------------------
+   THE BACKGROUND ORN
+---------------------------- */
+.about-background {
+  inset: 0;
   overflow: hidden;
-  border-radius: 5px;
-  position: relative;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
 }
 
-.hobby-track {
+.about-container {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 1300px;
+}
+
+@media (min-width: 640px) {
+  .about-container {
+    flex-direction: row;
+  }
+}
+
+.left-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.right-col {
+  flex: 0.8 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.about-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.about-left h2 {
+  background: linear-gradient(135deg, #ffffff 0%, #7a38bc 100%);
+  background-clip: text;
+  display: inline-block;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 4px rgba(174, 116, 255, 0.07),
+    0 0 8px rgba(174, 116, 255, 0.091);
+}
+
+.about-section {
+  box-sizing: border-box;
+  color: white;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.about-title {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1300px;
+}
+
+/* ---------------------------
+   ORBS + GENERAL
+---------------------------- */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gradient-orbs {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+/* GENERAL ORB */
+.orb {
+  animation: floatOrb 14s ease-in-out infinite;
+  border-radius: 50%;
+  filter: blur(60px);
+  height: 200px;
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  position: absolute;
+  width: 200px;
+}
+
+.orb-1 {
+  animation-delay: 0s;
+  background: radial-gradient(circle, #9b5cff, #352bff);
+  height: 70px;
+  left: 15%;
+  top: 10%;
+  width: 100px;
+}
+
+.orb-2 {
+  animation-delay: 4s;
+  background: linear-gradient(45deg, #f193fb57, #f5576c8c);
+  bottom: 15%;
+  height: 260px;
+  right: 10%;
+  width: 260px;
+}
+
+.orb-3 {
+  animation-delay: 8s;
+  background: linear-gradient(45deg, #4facfe, #00f2fe);
+  height: 180px;
+  left: 59%;
+  top: 45%;
+  width: 180px;
+}
+
+/* ORB ANIMATION */
+@keyframes floatOrb {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(15px) scale(1.03); }
+}
+
+/* ---------------------------
+   HOBBIES
+---------------------------- */
+.hobbies-grid {
+  animation: scrollInfinite 15s linear infinite;
+  display: flex;
+  gap: 10px;
   width: max-content;
-  animation: scroll 30s linear infinite;
+}
+
+.hobbies-scroll-wrapper {
+  cursor: pointer;
+  overflow: hidden;
+  padding-top: 10px;
+  width: 100%;
+}
+
+.hobbies-scroll-wrapper:hover .hobbies-grid {
+  animation-play-state: paused;
 }
 
 .hobby-item {
-  width: 100px;
-  height: 55px;
   border-radius: 5px;
+  flex: 0 0 auto;
+  height: 50px;
   overflow: hidden;
-  flex-shrink: 0;
+  width: 85px;
 }
 
 .hobby-item img {
-  width: 100%;
+  border-radius: 5px;
   height: 100%;
   object-fit: cover;
+  width: 100%;
 }
 
-/* Infinite Scroll Animation */
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.hobby-item img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
 }
 
-
-.card-soft {
-  background: rgba(73, 119, 168, 0.213);
-  backdrop-filter: blur(10px) saturate(180%);
-  -webkit-backdrop-filter: blur(40px) saturate(200%);
-  box-shadow: 0 4px 10px rgba(29, 29, 29, 0.148);
-  border-radius: 10px;
-  color: white;
+/* HOBBY SCROLL ANIMATION */
+@keyframes scrollInfinite {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-.card-soft h3 {
-  font-size: 0.7rem;
-}
-
-.card-soft span {
-  font-size: 0.65rem;
-}
-
-.card-title span {
-  font-family: "Exo 2", sans-serif;
-  font-weight: 600;
-  font-size: 0.5rem;
-}
-
-.card-syntax {
-  font-size: 0.60rem;
-  color: #d4d4d4;
-}
-
-.teach-stack {
-  font-family: "Source Code Pro", monospace;
-  font-size: 0.80rem;
-  color: #9cdcfe;
-}
-
-.stats div {
-  font-family: "Exo 2", sans-serif;
-  color: #ffffff;
-  font-size: 0.7rem;
-}
-
-.stats .text-gradient {
-  font-size: 0.9rem;
+/* ---------------------------
+   COMMON TEXT + BADGES
+---------------------------- */
+.main-title {
   font-weight: 700;
-  background: linear-gradient(90deg, #6ee7b7 0%, #60a5fa 50%, #c7b3ff 100%);
-  -webkit-background-clip: text;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.main-title .name {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   background-clip: text;
-  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-badge {
+  align-items: center;
+  backdrop-filter: blur(2px);
+  background: rgba(109, 35, 178, 0.085);
+  border: 1px solid rgba(169, 85, 247, 0.557);
+  border-radius: 25px;
+  display: inline-flex;
+  font-size: 0.8rem;
+  gap: 5px;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding: 3px 10px;
+}
+
+.section-content {
+  color: rgba(255, 255, 255, 0.873);
+  font-size: clamp(0.9rem, 1.4vw, 1rem);
+}
+
+.section-content span {
+  background: linear-gradient(135deg, #66ea99 0%, #2fd2af 100%);
+  background-clip: text;
   display: inline-block;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-header {
+  font-size: 1.2rem;
+}
+
+.swap-image {
+  display: block;
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+}
+
+.swap-wrapper {
+  border-radius: 12px;
+  height: 120px;
+  overflow: hidden;
+  position: relative;
+  width: 120px;
+}
+
+/* ---------------------------
+   RIGHT COLUMN
+---------------------------- */
+.right-col {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 40%;
+  gap: 20px;
+}
+
+.right-col h2 {
+  background: linear-gradient(135deg, #ffffff 0%, #7a38bc 100%);
+  background-clip: text;
+  display: inline-block;
+  margin-bottom: 8px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 4px rgba(174, 116, 255, 0.07),
+    0 0 8px rgba(174, 116, 255, 0.091);
+}
+
+/* ---------------------------
+   TECH GRID
+---------------------------- */
+.tech-category-header {
+  color: rgba(255, 255, 255, 0.774);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.tech-grid {
+  background: rgba(17, 25, 40, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+  padding: 1rem 1rem;
+  width: 100%;
+}
+
+.tech-item {
+  align-items: center;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(2px);
+  border-radius: 5px;
+  display: inline-flex;
+  font-size: 0.9rem;
+  gap: 2px;
+  margin-right: 9px;
+  margin-top: 7px;
+  padding: 5px 10px;
+}
+
+.tech-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* ---------------------------
+   STATS
+---------------------------- */
+.stat-item {
+  align-items: center;
+  background: rgba(17,25,40,0.8);
+  backdrop-filter: blur(20px);
+  border-radius: 5px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 0.8rem;
+  justify-content: center;
+  padding: 7px;
+  text-align: center;
+}
+
+.stat-label {
+  color: rgba(255,255,255,0.848);
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+
+.stat-number {
+  background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+  background-clip: text;
+  font-size: 1rem;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stats-grid {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+/* ---------------------------
+   VIEWER
+---------------------------- */
+.viewer {
+  align-items: center;
+  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  position: fixed;
+  z-index: 999;
+}
+
+.viewer-img {
+  border-radius: 12px;
+  max-height: 90%;
+  max-width: 90%;
+}
+
+/* ---------------------------
+   MEDIA QUERY
+---------------------------- */
+@media (max-width: 480px) {
+  .orb-1 {
+    bottom: 30% !important;
+    height: 80px !important;
+    left: auto !important;
+    top: auto !important;
+    width: 500px !important;
+  }
+
+  .orb-2 {
+    bottom: 10% !important;
+    height: 200px !important;
+    left: 10% !important;
+    top: auto !important;
+    width: 150px !important;
+  }
+
+  .orb-3 {
+    bottom: 10% !important;
+    height: 150px !important;
+    left: auto !important;
+    right: 15% !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100px !important;
+  }
 }
 
 </style>

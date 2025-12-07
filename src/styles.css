@@ -23,27 +23,12 @@
 html, body {
   margin: 0;
   padding: 0;
-  min-height: 100%;
+  font-family: var(--font-main);
+  overflow: auto;
   height: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
+  min-height: 200vh;
   font-family: var(--font-main);
 }
-
-#app {
-  position: relative;
-  z-index: 1;
-}
-
-
-.hero, .section {
-  background: transparent !important;
-}
-
-.page-section {
-  box-sizing: border-box;
-}
-
 
 /* ================================
     TYPOGRAPHY
@@ -55,6 +40,7 @@ h1 {
   color: var(--clr-white);
   text-shadow: 0 0 15px rgba(113, 113, 113, 0.445);
   letter-spacing: -0.03em;
+  font-family: var(--font-main);
 }
 
 h2 {
@@ -62,13 +48,14 @@ h2 {
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   color: var(--clr-light);
   letter-spacing: -0.02em;
+  font-family: var(--font-main);
 }
 
 p {
   font-weight: 400;
-  font-size: 1rem;
   color: var(--clr-gray);
   margin-bottom: 1rem;
+  font-family: var(--font-main);
 }
 
 .description {
@@ -77,22 +64,6 @@ p {
   color: var(--clr-light);
   opacity: 0.85;
 }
-
-span {
-  font-weight: 400;
-  color: var(--clr-white);
-}
-
-span.light {
-  color: var(--clr-gray);
-  font-weight: 300;
-}
-
-span.bold {
-  color: var(--clr-white);
-  font-weight: 600;
-}
-
 
 /* ================================
     BUTTONS

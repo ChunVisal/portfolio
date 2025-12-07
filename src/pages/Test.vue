@@ -6,7 +6,6 @@ import Navbar from "../components/Navbar.vue";
 import Hero from "../components/Hero.vue";
 import About from "../components/About.vue";
 import Projects from "../components/Projects.vue";
-import TechStack from "../components/TechStack.vue";
 import Footer from "../components/Footer.vue";
 
 // config
@@ -136,11 +135,6 @@ onBeforeUnmount(()=>{
       <!-- SECTION 2 - PROJECTS -->
       <section class="page-section absolute inset-0" :style="{ opacity: sectionOpacity(2), pointerEvents: Math.floor(progress) === 2 ? 'auto' : 'none' }">
         <Projects />
-      </section>
-
-      <!-- SECTION 3 - TECHSTACK -->
-      <section class="page-section absolute inset-0" :style="{ opacity: sectionOpacity(3), pointerEvents: Math.floor(progress) === 3 ? 'auto' : 'none' }">
-        <TechStack />
       </section>
 
       <!-- SECTION 4 - FOOTER -->

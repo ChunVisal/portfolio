@@ -4,19 +4,27 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "@fortawesome/free-brands-svg-icons": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/vue-fontawesome": "^3.1.2",
     "@tailwindcss/vite": "^4.1.17",
     "aos": "^2.3.4",
     "gsap": "^3.13.0",
+    "html2pdf.js": "^0.12.1",
+    "lucide-vue-next": "^0.555.0",
     "pinia": "^3.0.4",
+    "puppeteer": "^24.32.0",
     "tailwindcss": "^4.1.17",
     "vue": "^3.5.24",
     "vue-feather": "^2.0.0",
-    "vue-router": "^4.6.3"
+    "vue-router": "^4.6.3",
+    "vue3-simple-icons": "^15.6.0"
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",
