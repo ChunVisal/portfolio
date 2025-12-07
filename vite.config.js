@@ -7,5 +7,4 @@ export default defineConfig({
   plugins: [vue()
     , tailwindcss()
   ],
-  base: '/portfolio/'
 })
