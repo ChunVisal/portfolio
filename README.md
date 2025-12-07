@@ -57,8 +57,3 @@ Backend: Node.js (JSON storage system)
 - **Frontend** → Vercel  
 - **Backend** → Render  
 - **Domain** → chunvisal.me  
-
----
-
-## 📂 Folder Structure
-
