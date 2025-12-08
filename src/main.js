@@ -34,7 +34,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 // SOLID ICONS
-import { 
+import {
   faDatabase, 
   faServer, 
   faFire, 
