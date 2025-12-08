@@ -1,40 +1,36 @@
-import express from 'express'
-import cors from 'cors'
-import { db } from './db.js'
+import express from "express";
+import cors from "cors";
+import pkg from "pg";
 
-const app = express()
-app.use(cors())
-app.use(express.json())
+const { Pool } = pkg;
 
-app.post('/add-comment', async (req, res) => {
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const db = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
+});
+
+app.post("/add-comment", async (req, res) => {
   try {
-    const { message } = req.body
+    const { message } = req.body;
 
-    if (!message || !message.toString().trim()) {
-      return res.status(400).json({ error: "Empty message" })
-    }
+    if (!message || !message.trim())
+      return res.json({ error: "Empty comment" });
 
-    const time = new Date().toLocaleString()
+    await db.query(
+      "INSERT INTO comments (message) VALUES ($1)",
+      [message]
+    );
 
-    const result = await db.query(
-      "INSERT INTO comments (message, time) VALUES (?, ?)",
-      [message, time]
-    )
-
-    return res.json({
-      success: true,
-      saved: {
-        id: result[0].insertId,
-        message,
-        time
-      }
-    })
-
+    res.json({ success: true });
   } catch (err) {
-    console.error("DB error:", err)
-    return res.status(500).json({ error: "Database error" })
+    console.log(err);
+    res.status(500).json({ error: "Server error" });
   }
-})
+});
 
-const PORT = process.env.PORT || 3000
-app.listen(PORT, () => console.log("Backend running on " + PORT))
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log("Backend running on port " + PORT));
