@@ -1,0 +1,101 @@
+/* src/styles.css */
+@import "tailwindcss";
+
+
+/* ================================
+    THEME COLORS + GLOBAL FONT
+================================ */
+:root {
+  --clr-white: #fafafa;
+  --clr-light: #ffffff;
+  --clr-gray: rgb(255, 255, 255);
+  --clr-dark: #1a1a1c;
+  --clr-black: #000;
+
+  --font-main: "Exo 2", sans-serif;
+  
+  /* CSS Variables for Starfield Shadows (Fixing SASS variables) */
+  --shadows-small: #FFF 1px 1px 0px, #FFF -1px -1px 0px;
+  --shadows-medium: #FFF 2px 2px 0px, #FFF -2px -2px 0px;
+  --shadows-big: #FFF 3px 3px 0px, #FFF -3px -3px 0px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  overflow: auto;
+  height: auto;
+  min-height: 200vh;
+  font-family: var(--font-main);
+}
+
+/* ================================
+    TYPOGRAPHY
+================================ */
+
+h1 {
+  font-weight: 700;
+  font-size: clamp(2rem, 3vw, 2rem);
+  color: var(--clr-white);
+  text-shadow: 0 0 15px rgba(113, 113, 113, 0.445);
+  letter-spacing: -0.03em;
+  font-family: var(--font-main);
+}
+
+h2 {
+  font-weight: 600;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--clr-light);
+  letter-spacing: -0.02em;
+  font-family: var(--font-main);
+}
+
+p {
+  font-weight: 400;
+  color: var(--clr-gray);
+  margin-bottom: 1rem;
+  font-family: var(--font-main);
+}
+
+.description {
+  font-weight: 350;
+  font-size: 1.05rem;
+  color: var(--clr-light);
+  opacity: 0.85;
+}
+
+/* ================================
+    BUTTONS
+================================ */
+
+.btn {
+  font-family: var(--font-main);
+  font-weight: 500;
+  padding: 0.75rem 1.6rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  border: none;
+}
+
+.btn-white {
+  background: var(--clr-white);
+  color: var(--clr-dark);
+  border: 1px solid var(--clr-light);
+}
+
+.btn-white:hover {
+  background: var(--clr-light);
+}
+
+.btn-dark {
+  background: var(--clr-dark);
+  color: var(--clr-white);
+}
+
+.btn-dark:hover {
+  background: var(--clr-black);
+}
+
