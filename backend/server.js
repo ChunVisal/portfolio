@@ -13,6 +13,12 @@ const db = new Pool({
   ssl: { rejectUnauthorized: false }
 });
 
+app.use(cors({
+    origin: 'https://chunvisal.pro', // IMPORTANT: Replace with your actual frontend domain
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+}));
+
 app.post("/add-comment", async (req, res) => {
   try {
     const { message } = req.body;
