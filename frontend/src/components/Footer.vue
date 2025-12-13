@@ -1,4 +1,5 @@
 <template>
+  <!-- I changed something -->
   <footer class="portfolio-footer">
 
     <div class="grid">
