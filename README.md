@@ -65,6 +65,6 @@ Backend: Node.js (JSON storage system)
 - **Backend** → Render  
 - **Domain** → chunvisal.pro  
 
-git add README.md
+git add .
 git commit -m "trigger netlify deploy dec 13"
 git push --set-upstream origin main
