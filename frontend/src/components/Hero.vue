@@ -1,12 +1,11 @@
 <template>
-<section id="hero" class="hero-section">
-
+  <section id="hero" class="hero-section">
     <!-- Background Elements -->
     <div class="hero-background">
       <div class="gradient-orbs">
-        <div class="orb orb-1  hidden md:block"></div>
-        <div class="orb orb-2  hidden md:block"></div>
-        <div class="orb orb-3  hidden md:block"></div>
+        <div class="orb orb-1 hidden md:block"></div>
+        <div class="orb orb-2 hidden md:block"></div>
+        <div class="orb orb-3 hidden md:block"></div>
       </div>
     </div>
 
@@ -24,22 +23,23 @@
         <div class="headlines">
           <h1 class="main-headline">
             <span class="line line-1">Building Digital</span>
-            <span class="line line-2 glitch" data-text="Experiences">Experiences</span>
-
+            <span class="line line-2 glitch" data-text="Experiences"
+              >Experiences</span
+            >
           </h1>
-          
+
           <h2 class="sub-headline">
             Full-Stack Developer & Future Software Engineer
           </h2>
 
           <p class="description">
-            I build modern, clean and powerful digital experiences focused on speed, 
-            architecture, design, performance and user experience.
+            Learning modern web development by building real projects, focusing
+            on clean code, performance, and user experience.
           </p>
         </div>
 
         <!-- CTA Buttons -->
-       <div class="cta-buttons">
+        <div class="cta-buttons">
           <button class="btn btn-primary" @click="scrollToProjects">
             <span>View Projects</span>
             <VueFeather type="arrow-up-right" size="18" class="btn-icon" />
@@ -55,36 +55,50 @@
 
           <div class="tech-items">
             <span class="tech-item">
-              <font-awesome-icon :icon="['fab', 'react']" style="color:#61DBFB;" />
+              <font-awesome-icon
+                :icon="['fab', 'react']"
+                style="color: #61dbfb"
+              />
               React
             </span>
 
             <span class="tech-item">
-              <font-awesome-icon :icon="['fab', 'vuejs']" style="color:#41B883;" />
+              <font-awesome-icon
+                :icon="['fab', 'vuejs']"
+                style="color: #41b883"
+              />
               Vue JS
             </span>
 
             <span class="tech-item">
-              <font-awesome-icon :icon="['fab', 'node-js']" style="color:#3C873A;" />
+              <font-awesome-icon
+                :icon="['fab', 'node-js']"
+                style="color: #3c873a"
+              />
               Node.js
             </span>
 
             <span class="tech-item">
-              <font-awesome-icon :icon="['fas', 'database']" style="color:#0078D4;" />
+              <font-awesome-icon
+                :icon="['fas', 'database']"
+                style="color: #0078d4"
+              />
               SQL
             </span>
 
             <span class="tech-item">
-              <font-awesome-icon :icon="['fas', 'fire']" style="color:#FFA611;" />
+              <font-awesome-icon
+                :icon="['fas', 'fire']"
+                style="color: #ffa611"
+              />
               Firebase
             </span>
           </div>
         </div>
-
       </div>
 
       <!-- Visual Element -->
-      <div class="hero-visual ">
+      <div class="hero-visual">
         <div class="code-window hidden md:block">
           <div class="window-header">
             <div class="window-dots">
@@ -92,9 +106,7 @@
               <span></span>
               <span></span>
             </div>
-            <span class="file-name">
-              Developer.ts
-            </span>
+            <span class="file-name"> Developer.ts </span>
           </div>
           <div class="code-content">
             <div class="code-line">
@@ -139,22 +151,21 @@
 
 <script setup>
 const scrollToProjects = () => {
-  const projectsSection = document.getElementById('projects');
-  projectsSection?.scrollIntoView({ behavior: 'smooth' });
+  const projectsSection = document.getElementById("projects");
+  projectsSection?.scrollIntoView({ behavior: "smooth" });
 };
 
 const scrollTofooter = () => {
-  const footerSection = document.getElementById('contact');
-  footerSection?.scrollIntoView({ behavior: 'smooth' });
+  const footerSection = document.getElementById("contact");
+  footerSection?.scrollIntoView({ behavior: "smooth" });
 };
-
 </script>
 
 <style scoped>
 .hero-section {
   min-height: 100dvh;
   height: 100dvh;
-  
+
   position: relative;
   display: flex;
   align-items: center;
@@ -290,10 +301,24 @@ const scrollTofooter = () => {
 }
 
 @keyframes noisePulse {
-  0%, 96%, 100% { opacity: 0; transform: none; }
-  97% { opacity: 1; transform: translate(1px, -1px) scaleX(1.02); }
-  98% { opacity: 1; transform: translate(-1px, 1px) scaleX(0.98); }
-  99% { opacity: 1; transform: translate(0px, 0px) scaleX(1.02); }
+  0%,
+  96%,
+  100% {
+    opacity: 0;
+    transform: none;
+  }
+  97% {
+    opacity: 1;
+    transform: translate(1px, -1px) scaleX(1.02);
+  }
+  98% {
+    opacity: 1;
+    transform: translate(-1px, 1px) scaleX(0.98);
+  }
+  99% {
+    opacity: 1;
+    transform: translate(0px, 0px) scaleX(1.02);
+  }
 }
 
 .glitch {
@@ -353,40 +378,99 @@ const scrollTofooter = () => {
 
 /* animations */
 @keyframes glitchA {
-  0%, 88% { opacity: 0; transform: none; }
-  90% { opacity: 1; transform: translate(-3px, -1px); }
-  92% { opacity: 1; transform: translate(2px, 1px); }
-  94% { opacity: 0; }
+  0%,
+  88% {
+    opacity: 0;
+    transform: none;
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-3px, -1px);
+  }
+  92% {
+    opacity: 1;
+    transform: translate(2px, 1px);
+  }
+  94% {
+    opacity: 0;
+  }
 }
 
 @keyframes glitchB {
-  0%, 90% { opacity: 0; transform: none; }
-  92% { opacity: 1; transform: translate(3px, -1px); }
-  94% { opacity: 1; transform: translate(-2px, 1px); }
-  96% { opacity: 0; }
+  0%,
+  90% {
+    opacity: 0;
+    transform: none;
+  }
+  92% {
+    opacity: 1;
+    transform: translate(3px, -1px);
+  }
+  94% {
+    opacity: 1;
+    transform: translate(-2px, 1px);
+  }
+  96% {
+    opacity: 0;
+  }
 }
 
 @keyframes glitchC {
-  0%, 93% { opacity: 0; transform: none; }
-  94% { opacity: 1; transform: skewX(10deg); }
-  95% { opacity: 1; transform: skewX(-10deg); }
-  96% { opacity: 0; }
+  0%,
+  93% {
+    opacity: 0;
+    transform: none;
+  }
+  94% {
+    opacity: 1;
+    transform: skewX(10deg);
+  }
+  95% {
+    opacity: 1;
+    transform: skewX(-10deg);
+  }
+  96% {
+    opacity: 0;
+  }
 }
 
 @keyframes glitchD {
-  0%, 92% { opacity: 0; transform: none; }
-  93% { opacity: 1; transform: translateY(-2px); }
-  94% { opacity: 1; transform: translateY(2px); }
-  95% { opacity: 0; }
+  0%,
+  92% {
+    opacity: 0;
+    transform: none;
+  }
+  93% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+  94% {
+    opacity: 1;
+    transform: translateY(2px);
+  }
+  95% {
+    opacity: 0;
+  }
 }
 
 @keyframes glitchE {
-  0%, 92% { opacity: 0; transform: none; }
-  93% { opacity: 1; transform: translateX(2px); }
-  94% { opacity: 1; transform: translateX(-2px); }
-  95% { opacity: 0; }
+  0%,
+  92% {
+    opacity: 0;
+    transform: none;
+  }
+  93% {
+    opacity: 1;
+    transform: translateX(2px);
+  }
+  94% {
+    opacity: 1;
+    transform: translateX(-2px);
+  }
+  95% {
+    opacity: 0;
+  }
 }
-
 
 .sub-headline {
   font-size: clamp(1rem, 2vw, 1.3rem);
@@ -428,21 +512,20 @@ const scrollTofooter = () => {
 .btn-primary:hover {
   transform: translateY(-1px);
   background: linear-gradient(135deg, #5f75e3, #6d44a0); /* slightly darker */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
 }
-
 
 .btn-secondary {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(2px);
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: white;
 }
 
 .btn-secondary:hover {
   transform: translateY(-1px);
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Tech Stack */
@@ -466,14 +549,12 @@ const scrollTofooter = () => {
   text-align: center;
   justify-content: center;
   align-items: center;
-
-
 }
 
 .tech-item {
-  display: flex;                /* 🔥 makes centering possible */
-  justify-content: center;      /* horizontal center */
-  align-items: center;          /* vertical center */
+  display: flex; /* 🔥 makes centering possible */
+  justify-content: center; /* horizontal center */
+  align-items: center; /* vertical center */
 
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(2px);
@@ -483,7 +564,7 @@ const scrollTofooter = () => {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.8);
   transition: all 0.3s ease;
-  
+
   flex: 1;
 }
 
@@ -492,7 +573,6 @@ const scrollTofooter = () => {
   height: 16px;
   margin-right: 3px;
 }
-
 
 .tech-item:hover {
   background: rgba(255, 255, 255, 0.1);
@@ -534,9 +614,15 @@ const scrollTofooter = () => {
   border-radius: 50%;
 }
 
-.window-dots span:nth-child(1) { background: #ff5f57; }
-.window-dots span:nth-child(2) { background: #ffbd2e; }
-.window-dots span:nth-child(3) { background: #28ca42; }
+.window-dots span:nth-child(1) {
+  background: #ff5f57;
+}
+.window-dots span:nth-child(2) {
+  background: #ffbd2e;
+}
+.window-dots span:nth-child(3) {
+  background: #28ca42;
+}
 
 .file-name {
   margin-left: 4px;
@@ -546,7 +632,7 @@ const scrollTofooter = () => {
 }
 
 .code-content {
-  font-family: 'Monaco', 'Consolas', monospace;
+  font-family: "Monaco", "Consolas", monospace;
   font-size: 0.875rem;
   line-height: 1.8;
 }
@@ -602,7 +688,7 @@ const scrollTofooter = () => {
 
 /* ARROW HEAD */
 .scroll-arrow::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -8px;
   left: 50%;
@@ -637,7 +723,7 @@ const scrollTofooter = () => {
     transform: translateX(-50%) translateY(0) rotate(45deg);
   }
 }
-  
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .hero-section {
@@ -645,19 +731,19 @@ const scrollTofooter = () => {
     min-height: 90vh;
   }
   .orb-1 {
-  top: 80%;
-  left: 10%;
-}
+    top: 80%;
+    left: 10%;
+  }
 
-.orb-2 {
-  bottom: 5%;
-  right: 10%;
-}
+  .orb-2 {
+    bottom: 5%;
+    right: 10%;
+  }
 
-.orb-3 {
-  top: 75%;
-  right: 50%;
-}
+  .orb-3 {
+    top: 75%;
+    right: 50%;
+  }
 
   .hero-container {
     grid-template-columns: 1fr;
@@ -679,7 +765,7 @@ const scrollTofooter = () => {
     font-size: 0.9rem;
     max-width: 100%;
   }
-  
+
   .btn {
     padding: 0.7rem 1.2rem;
     font-size: 0.85rem;
@@ -694,7 +780,9 @@ const scrollTofooter = () => {
     margin: 0 auto;
   }
 
-  .orb-1, .orb-2, .orb-3 {
+  .orb-1,
+  .orb-2,
+  .orb-3 {
     transform: scale(0.6);
   }
 }
@@ -704,7 +792,6 @@ const scrollTofooter = () => {
     width: 95%;
     gap: 1rem;
   }
-
 
   .btn {
     width: 100%;
@@ -731,5 +818,4 @@ const scrollTofooter = () => {
      min-height: 80vh;
   }
 } */
-
 </style>

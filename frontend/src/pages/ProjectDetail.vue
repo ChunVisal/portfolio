@@ -97,12 +97,12 @@
 
 <script>
 import { projects } from "../data/project.js";
-import VueFeather from 'vue-feather'; // Make sure you have installed: npm install vue-feather
+import VueFeather from "vue-feather";
+import { useHead } from "@vueuse/head";
 
 export default {
-  components: {
-    VueFeather
-  },
+  components: { VueFeather },
+
   data() {
     return {
       project: null,
@@ -110,92 +110,116 @@ export default {
       showModal: false,
     };
   },
+
   created() {
     const id = this.$route.params.id;
     const foundProject = projects.find(p => p.id == id);
 
-    if (foundProject) {
-        this.project = foundProject;
-        // Initialize the main image
-        this.activeImage = this.project.thumbnail;
-    } else {
-        console.error("Project not found with ID:", id);
+    if (!foundProject) {
+      console.error("Project not found:", id);
+      return;
     }
+
+    this.project = foundProject;
+    this.activeImage = this.project.thumbnail;
+
+    /* =========================
+       ✅ SEO SETUP (THE FIX)
+    ========================== */
+    useHead({
+      title: `${this.project.title} | Chun Visal`,
+      meta: [
+        {
+          name: "description",
+          content: this.project.shortDescription || this.project.longDescription,
+        },
+
+        { property: "og:type", content: "website" },
+        {
+          property: "og:title",
+          content: `${this.project.title} | Chun Visal`,
+        },
+        {
+          property: "og:description",
+          content: this.project.shortDescription,
+        },
+        {
+          property: "og:image",
+          content: this.project.thumbnail,
+        },
+        {
+          property: "og:url",
+          content: `https://chunvisal.pro/project/${this.project.id}`,
+        },
+
+        { name: "twitter:card", content: "summary_large_image" },
+        {
+          name: "twitter:title",
+          content: `${this.project.title} | Chun Visal`,
+        },
+        {
+          name: "twitter:description",
+          content: this.project.shortDescription,
+        },
+        {
+          name: "twitter:image",
+          content: this.project.thumbnail,
+        },
+      ],
+      link: [
+        {
+          rel: "canonical",
+          href: `https://chunvisal.pro/project/${this.project.id}`,
+        },
+      ],
+    });
   },
+
   computed: {
     allProjectImages() {
-      if (!this.project) {
-        return [];
+      if (!this.project) return [];
+
+      const images = new Set();
+      if (this.project.thumbnail) images.add(this.project.thumbnail);
+
+      if (Array.isArray(this.project.images)) {
+        this.project.images.forEach(img => img && images.add(img));
       }
-      
-      let allImages = [];
-      const imageSet = new Set();
-      
-      // 1. Add the main thumbnail first
-      if (this.project.thumbnail) {
-        const thumbUrl = this.project.thumbnail;
-        allImages.push(thumbUrl);
-        imageSet.add(thumbUrl);
-      }
-      
-      // 2. Add gallery images, ensuring they are unique and valid
-      if (this.project.images && Array.isArray(this.project.images)) {
-        for (const imgUrl of this.project.images) {
-          if (imgUrl && !imageSet.has(imgUrl)) {
-            allImages.push(imgUrl);
-            imageSet.add(imgUrl);
-          }
-        }
-      }
-      
-      return allImages; 
-    }
+
+      return Array.from(images);
+    },
   },
-  methods: { 
+
+  methods: {
     getTechIcon(techName) {
-      let icon = ['fas', 'star'];
-      let color = '#888888';
+      const map = {
+        react: { icon: ["fab", "react"], color: "#61DAFB" },
+        tailwind: { icon: ["fas", "wind"], color: "#06B6D4" },
+        firebase: { icon: ["fas", "fire"], color: "#FFCA28" },
+        node: { icon: ["fas", "server"], color: "#68A063" },
+        vue: { icon: ["fab", "vuejs"], color: "#4FC08D" },
+        gsap: { icon: ["fas", "bolt"], color: "#88CE02" },
+      };
 
-      switch (techName.toLowerCase()) {
-        case 'react':
-          icon = ['fab', 'react'];
-          color = '#61DAFB';
-          break;
-        case 'tailwind':
-          icon = ['fas', 'wind'];
-          color = '#06B6D4';
-          break;
-        case 'firebase':
-          icon = ['fas', 'fire'];
-          color = '#FFCA28';
-          break;
-        case 'node':
-          icon = ['fas', 'server'];
-          color = '#68A063';
-          break;
-        case 'vue':
-          icon = ['fab', 'vuejs'];
-          color = '#4FC08D';
-          break;
-        case 'gsap':
-          icon = ['fas', 'bolt'];
-          color = '#88CE02';
-          break;
-        default:
-          break;
-      }
-
-      return { icon, color };
+      return map[techName.toLowerCase()] || {
+        icon: ["fas", "star"],
+        color: "#888",
+      };
     },
+
     openModal() {
-        this.showModal = true;
+      this.showModal = true;
+      document.body.style.overflow = "hidden";
     },
+
     closeModal() {
-        this.showModal = false;
+      this.showModal = false;
+      document.body.style.overflow = "";
     },
-  }
+  },
 };
 </script>
+
 
 <style>
 /* --- BASE STYLES --- */

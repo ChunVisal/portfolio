@@ -1,6 +1,5 @@
 <template>
   <section id="about" class="about-section relative pt-10 pb-5 overflow-hidden">
-
     <div class="about-background">
       <div class="gradient-orbs">
         <div class="orb orb-1"></div>
@@ -8,10 +7,9 @@
         <div class="orb orb-3"></div>
       </div>
     </div>
-    
+
     <div class="about-title px-5 sm:px-10">
       <div class="title-left">
-
         <div class="section-badge">
           <VueFeather type="code" stroke="green" size="14" />
           Full Stack Developer
@@ -22,15 +20,12 @@
           <span class="name">Chun Visal</span>
         </h1>
 
-        <p class="tagline">
-          "Crafting digital experiences that matter"
-        </p>
-
+        <p class="tagline">"Crafting digital experiences that matter"</p>
       </div>
 
       <!-- image for mobile -->
-       <div class="title-right block sm:hidden">
-       <div class="swap-wrapper">
+      <div class="title-right block sm:hidden">
+        <div class="swap-wrapper">
           <transition name="fade">
             <!-- use currentIndex as key so Vue always transitions -->
             <img
@@ -42,33 +37,33 @@
             />
           </transition>
         </div>
-       </div>
-    </div>  
+      </div>
+    </div>
 
     <!-- CENTERED CONTAINER -->
-    <div class="about-container flex flex-col px-5 sm:px-10 sm:flex-row gap-3 sm:gap-10">
-      
+    <div
+      class="about-container flex flex-col px-5 sm:px-10 sm:flex-row gap-3 sm:gap-10"
+    >
       <!-- LEFT COLUMN -->
       <div class="left-col">
-
         <div class="about-left">
-
           <div class="content-section">
             <h2 class="section-header">What I Do</h2>
             <div class="section-content">
               I'm a fast-learning full-stack developer in training. I build
-              <span>high-performance web applications</span>, clean UI and functional APIs.
-              I learn by building — trying ideas, breaking things, and fixing them again.
-              Every project moves me closer to the developer I want to become.
+              <span>high-performance web applications</span>, clean UI and
+              functional APIs. I learn by building — trying ideas, breaking
+              things, and fixing them again. Every project moves me closer to
+              the developer I want to become.
             </div>
           </div>
 
           <div class="content-section">
             <h2 class="section-header">My Approach</h2>
             <div class="section-content">
-              Write simple, readable code and solve problems step by step.
-              Care about design, performance, and improving every single day.
-              If <span>I don't know something, I learn it quick</span>.
+              Write simple, readable code and solve problems step by step. Care
+              about design, performance, and improving every single day. If
+              <span>I don't know something, I learn it quick</span>.
             </div>
           </div>
 
@@ -85,113 +80,178 @@
             <h2 class="section-header">Hobbies & Interests</h2>
             <div class="hobbies-scroll-wrapper">
               <div class="hobbies-grid">
-                  <div class="hobby-item" v-for="(img, index) in hobbies" :key="'h1-'+index" @click="openImage(img)">
-                    <img :src="img" alt="">
-                  </div>
-                  <div class="hobby-item" v-for="(img, index) in hobbies" :key="'h2-'+index" @click="openImage(img)">
-                    <img :src="img" alt="">
-                  </div>
+                <div
+                  class="hobby-item"
+                  v-for="(img, index) in hobbies"
+                  :key="'h1-' + index"
+                  @click="openImage(img)"
+                >
+                  <img :src="img" alt="" />
                 </div>
-            </div>
+                <div
+                  class="hobby-item"
+                  v-for="(img, index) in hobbies"
+                  :key="'h2-' + index"
+                  @click="openImage(img)"
+                >
+                  <img :src="img" alt="" />
+                </div>
+              </div>
             </div>
           </div>
-
-         <div class="viewer" v-if="viewerImg" @click="viewerImg = null">
-            <img :src="viewerImg" class="viewer-img" />
-          </div>
-
         </div>
+      </div>
 
       <!-- RIGHT COLUMN -->
       <div class="right-col">
-
         <div class="content-section">
-  <h2 class="section-header">Tech Arsenal</h2>
+          <h2 class="section-header">Tech Arsenal</h2>
 
-  <div class="tech-grid">
+          <div class="tech-grid">
+            <div class="tech-category">
+              <div class="tech-category-header">Frontend</div>
+              <div class="tech-items">
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fab', 'html5']"
+                    size="sm"
+                    :style="{ color: '#e34c26' }"
+                  />
+                  HTML
+                </div>
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fab', 'css3']"
+                    size="sm"
+                    :style="{ color: '#264de4' }"
+                  />
+                  CSS
+                </div>
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fab', 'vuejs']"
+                    size="sm"
+                    :style="{ color: '#42b883' }"
+                  />
+                  Vue
+                </div>
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fab', 'react']"
+                    size="sm"
+                    :style="{ color: '#61dafb' }"
+                  />
+                  React
+                </div>
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fab', 'js']"
+                    size="sm"
+                    :style="{ color: '#f7df1e' }"
+                  />
+                  JavaScript
+                </div>
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fas', 'wind']"
+                    size="sm"
+                    :style="{ color: '#38bdf8' }"
+                  />
+                  Tailwind
+                </div>
+              </div>
+            </div>
+            <div class="tech-category">
+              <div class="tech-category-header">Backend</div>
+              <div class="tech-items">
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fab', 'node-js']"
+                    size="sm"
+                    :style="{ color: '#68a063' }"
+                  />
+                  Node.js
+                </div>
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fas', 'server']"
+                    size="sm"
+                    :style="{ color: '#a855f7' }"
+                  />
+                  Express
+                </div>
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fas', 'database']"
+                    size="sm"
+                    :style="{ color: '#4ade80' }"
+                  />
+                  SQL
+                </div>
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fas', 'fire']"
+                    size="sm"
+                    :style="{ color: '#f97316' }"
+                  />
+                  Firebase
+                </div>
+              </div>
+            </div>
 
-    <div class="tech-category">
-      <div class="tech-category-header">Frontend</div>
-      <div class="tech-items">
-        <div class="tech-item">
-          <font-awesome-icon :icon="['fab', 'html5']" size="sm" :style="{ color: '#e34c26' }" />
-          HTML
+            <div class="tech-category">
+              <div class="tech-category-header">Tools</div>
+              <div class="tech-items">
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fas', 'bolt']"
+                    size="sm"
+                    :style="{ color: '#facc15' }"
+                  />
+                  Postman
+                </div>
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fas', 'code']"
+                    size="sm"
+                    :style="{ color: '#3b82f6' }"
+                  />
+                  VS Code
+                </div>
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fab', 'figma']"
+                    size="sm"
+                    :style="{ color: '#a855f7' }"
+                  />
+                  Figma
+                </div>
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fab', 'github']"
+                    size="sm"
+                    :style="{ color: '#fff' }"
+                  />
+                  Git/Github
+                </div>
+                <div class="tech-item">
+                  <font-awesome-icon
+                    :icon="['fas', 'rocket']"
+                    size="sm"
+                    :style="{ color: '#fff' }"
+                  />
+                  Railway
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="tech-item">
-          <font-awesome-icon :icon="['fab', 'css3']" size="sm" :style="{ color: '#264de4' }" />
-          CSS
-        </div>
-        <div class="tech-item">
-          <font-awesome-icon :icon="['fab', 'vuejs']" size="sm" :style="{ color: '#42b883' }" />
-          Vue
-        </div>
-        <div class="tech-item">
-          <font-awesome-icon :icon="['fab', 'react']" size="sm" :style="{ color: '#61dafb' }" />
-          React
-        </div>
-        <div class="tech-item">
-          <font-awesome-icon :icon="['fab', 'js']" size="sm" :style="{ color: '#f7df1e' }" />
-          JavaScript
-        </div>
-        <div class="tech-item">
-          <font-awesome-icon :icon="['fas', 'wind']" size="sm" :style="{ color: '#38bdf8' }" />
-          Tailwind
-        </div>
-      </div>
-    </div>
-    <div class="tech-category">
-      <div class="tech-category-header">Backend</div>
-      <div class="tech-items">
-        <div class="tech-item">
-          <font-awesome-icon :icon="['fab', 'node-js']" size="sm" :style="{ color: '#68a063' }" />
-          Node.js
-        </div>
-        <div class="tech-item">
-          <font-awesome-icon :icon="['fas', 'server']" size="sm" :style="{ color: '#a855f7' }" />
-          Express
-        </div>
-        <div class="tech-item">
-          <font-awesome-icon :icon="['fas', 'database']" size="sm" :style="{ color: '#4ade80' }" />
-          SQL
-        </div>
-        <div class="tech-item">
-          <font-awesome-icon :icon="['fas', 'fire']" size="sm" :style="{ color: '#f97316' }" />
-          Firebase
-        </div>
-      </div>
-    </div>
-
-
-   <div class="tech-category">
-      <div class="tech-category-header">Tools</div>
-      <div class="tech-items">
-        <div class="tech-item">
-          <font-awesome-icon :icon="['fas', 'bolt']" size="sm" :style="{ color: '#facc15' }" />
-          Postman
-        </div>
-        <div class="tech-item">
-          <font-awesome-icon :icon="['fas', 'code']" size="sm" :style="{ color: '#3b82f6' }" />
-          VS Code
-        </div>
-        <div class="tech-item">
-          <font-awesome-icon :icon="['fab', 'figma']" size="sm" :style="{ color: '#a855f7' }" />
-          Figma
-        </div>
-        <div class="tech-item">
-          <font-awesome-icon :icon="['fab', 'github']" size="sm" :style="{ color: '#fff' }" />
-          Git/Github
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
         <div class="stats-section">
           <div class="stats-grid">
-
             <div class="stat-item">
-              <div class="stat-number">0+</div>
-              <div class="stat-label">Experience</div>
+              <div class="stat-number">Internship</div>
+              <div class="stat-label">Student</div>
             </div>
 
             <div class="stat-item">
@@ -208,52 +268,55 @@
               <div class="stat-number">100%</div>
               <div class="stat-label">Effort</div>
             </div>
-
           </div>
         </div>
-
       </div>
+
+      <Teleport to="body">
+        <div v-if="viewerImg" class="viewer" @click="closeViewer">
+          <img :src="viewerImg" class="viewer-img" />
+        </div>
+      </Teleport>
     </div>
   </section>
 </template>
 
-
 <script setup>
-  import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from "vue";
 
-  import car from '../../public/hobbies/car.png';
-  import coding from '../../public/hobbies/coding.png';
-  import cybersecurity from '../../public/hobbies/cybersecurity.png';
-  import fastandfurious from '../../public/hobbies/fastandfurious.png';
-  import fortnite from '../../public/hobbies/fortnite.png';
-  import gym from '../../public/hobbies/gym.png';
-  import minecraft from '../../public/hobbies/minecraft.png';
-  import music from '../../public/hobbies/music.png';
-  import visal from '../../public/hobbies/visal.jpg';
+import car from "../../public/hobbies/car.png";
+import coding from "../../public/hobbies/coding.png";
+import cybersecurity from "../../public/hobbies/cybersecurity.png";
+import fastandfurious from "../../public/hobbies/fastandfurious.png";
+import fortnite from "../../public/hobbies/fortnite.png";
+import gym from "../../public/hobbies/gym.png";
+import minecraft from "../../public/hobbies/minecraft.png";
+import music from "../../public/hobbies/music.png";
+import visal from "../../public/hobbies/visal.jpg";
 
-  const hobbies = [
-    car,
-    coding,
-    cybersecurity,
-    fastandfurious,
-    fortnite, 
-    gym,
-    minecraft,
-    music,
-    visal
-  ];
+const hobbies = [
+  car,
+  coding,
+  cybersecurity,
+  fastandfurious,
+  fortnite,
+  gym,
+  minecraft,
+  music,
+  visal,
+];
 
-  const currentIndex = ref(0);
-  const viewerImg = ref(null);
-  let intervalId = null;
+const currentIndex = ref(0);
+const viewerImg = ref(null);
+let intervalId = null;
 
-  onMounted(() => {
-    setInterval(() => {
-      currentIndex.value = (currentIndex.value + 1) % hobbies.length;
-    }, 3000);
-  });
+onMounted(() => {
+  setInterval(() => {
+    currentIndex.value = (currentIndex.value + 1) % hobbies.length;
+  }, 3000);
+});
 
-  onBeforeUnmount(() => {
+onBeforeUnmount(() => {
   if (intervalId) clearInterval(intervalId);
 });
 
@@ -261,11 +324,12 @@ function openImage(img) {
   viewerImg.value = img;
 }
 
+function closeViewer() {
+  viewerImg.value = null;
+}
 </script>
 
-
 <style>
-
 /* ---------------------------
    THE BACKGROUND ORN
 ---------------------------- */
@@ -405,8 +469,13 @@ function openImage(img) {
 
 /* ORB ANIMATION */
 @keyframes floatOrb {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(15px) scale(1.03); }
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(15px) scale(1.03);
+  }
 }
 
 /* ---------------------------
@@ -452,8 +521,12 @@ function openImage(img) {
 
 /* HOBBY SCROLL ANIMATION */
 @keyframes scrollInfinite {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* ---------------------------
@@ -556,7 +629,7 @@ function openImage(img) {
   background: rgba(17, 25, 40, 0.8);
   backdrop-filter: blur(20px);
   border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   display: grid;
   gap: 10px;
   grid-template-columns: 1fr;
@@ -566,7 +639,7 @@ function openImage(img) {
 
 .tech-item {
   align-items: center;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(2px);
   border-radius: 5px;
   display: inline-flex;
@@ -587,7 +660,7 @@ function openImage(img) {
 ---------------------------- */
 .stat-item {
   align-items: center;
-  background: rgba(17,25,40,0.8);
+  background: rgba(17, 25, 40, 0.8);
   backdrop-filter: blur(20px);
   border-radius: 5px;
   display: flex;
@@ -600,13 +673,13 @@ function openImage(img) {
 }
 
 .stat-label {
-  color: rgba(255,255,255,0.848);
+  color: rgba(255, 255, 255, 0.848);
   font-size: 0.75rem;
   margin-top: 2px;
 }
 
 .stat-number {
-  background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   background-clip: text;
   font-size: 1rem;
   -webkit-background-clip: text;
@@ -624,21 +697,24 @@ function openImage(img) {
    VIEWER
 ---------------------------- */
 .viewer {
-  align-items: center;
-  backdrop-filter: blur(8px);
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  inset: 0;
-  justify-content: center;
   position: fixed;
-  z-index: 999;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 99999;
 }
 
 .viewer-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
   border-radius: 12px;
-  max-height: 90%;
-  max-width: 90%;
 }
+  
 
 /* ---------------------------
    MEDIA QUERY
@@ -670,5 +746,4 @@ function openImage(img) {
     width: 100px !important;
   }
 }
-
 </style>

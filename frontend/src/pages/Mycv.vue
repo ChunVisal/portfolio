@@ -2,15 +2,17 @@
 import { ref, } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-// --- Data defined in script setup (Necessary for Vue 3 to render it) ---
-const isImageModalOpen = ref(false)
+const isImageModalOpen = ref(false);
+const modalImage = ref(null);
 
-const openImageModal = () => {
-    isImageModalOpen.value = true;
+const openImageModal = (src) => {
+  modalImage.value = src;
+  isImageModalOpen.value = true;
 };
 
 const closeImageModal = () => {
-    isImageModalOpen.value = false;
+  isImageModalOpen.value = false;
+  modalImage.value = null;
 };
 
 const macDots = [
@@ -22,6 +24,7 @@ const macDots = [
 import apexmotorLogo from "../assets/project/apexmotorlogo.png";
 import venubookingLogo from "../assets/project/venubookinglogo.png";
 import portfolioLogo from "../assets/project/visallogo.png";
+import profileImg from "../assets/project/visal1.jpg"
 
 const projects = [
     { 
@@ -74,7 +77,8 @@ const skills = {
     { icon: ['fas', 'code'], name: 'VS Code', color: 'text-blue-400' },
     { icon: ['fab', 'figma'], name: 'Figma', color: 'text-pink-300' },
     { icon: ['fab', 'github'], name: 'Git / GitHub', color: 'text-white' },
-    { icon: ['fas', 'cloud'], name: 'Netlify', color: 'text-cyan-300' }
+    { icon: ['fas', 'cloud'], name: 'Netlify', color: 'text-cyan-300' },
+    { icon: ['fas', 'rocket'], name: 'Railway', color: 'text-white' }
   ]
 };
 
@@ -228,14 +232,27 @@ const softSkills = [
                     
                     <div class="flex flex-col items-center justify-center w-full lg:w-1/5 max-w-xs lg:max-w-auto mr-0 lg:mr-6">
                         <img 
-                            src="../../src/assets/project/profile.jpg" 
+                            :src="profileImg" 
                             alt="Chun Visal Profile" 
                             class="w-auto h-32 sm:w-full sm:h-auto rounded-sm border-2 border-pink-400/50 p-1 cursor-pointer transition transform hover:scale-[1.05]"
                             @click="openImageModal"
                         />
                         <span class="mt-2 text-[10px] text-[#6b7280] whitespace-nowrap">src/assets/project/profile.jpg</span>
                     </div>
-                    
+                                <Teleport to="body">
+  <div
+    v-if="isImageModalOpen"
+    class="modal-overlay"
+    @click="closeImageModal"
+  >
+    <img
+      :src="modalImage"
+      class="modal-image"
+      @click.stop
+    />
+  </div>
+</Teleport>
+           
                     <div class="flex-1 w-full lg:w-auto order-first lg:order-0">
                         <div class="">
                             <div class="text-[#6b7280] italic">// Constructor - Developer Profile</div>
@@ -607,4 +624,23 @@ div { -webkit-font-smoothing: antialiased; }
 .fade-enter-from, .fade-leave-to {
   opacity: 0;
 }
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999999;
+}
+
+.modal-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 12px;
+}
+
 </style>

@@ -49,7 +49,7 @@ export const projects = [
     logoBrand: venubookingLogo,
     longDescription:
       "VenuBooking was built to make event ticket booking fast and seamless. Integrates with Node.js backend, uses Tailwind for UI, and React for interactive components.",
-    tech: ["React", "Node", "Tailwind"],
+    tech: ["React", "Node", "Tailwind", "Mysql"],
     features: [
       "Ticket booking system",
       "Admin dashboard",
@@ -85,7 +85,7 @@ export const projects = [
     ],
 
     github: "https://github.com/JoeNarthan/portfolio",
-    demo: "https://chunvisal.me",
+    demo: "https://chunvisal.pro",
 
     status: "Completed",
     date: "2025",

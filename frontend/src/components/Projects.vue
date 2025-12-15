@@ -6,12 +6,12 @@
     </h1>
 
     <div class="projects-grid">
-      <div 
-        v-for="(project, index) in projects" 
+      <div
+        v-for="(project, index) in projects"
         :key="project.id"
         class="project-card-wrapper"
-        @mouseenter="!isMobile ? active = index : null"
-        @mouseleave="!isMobile ? active = null : null"
+        @mouseenter="!isMobile ? (active = index) : null"
+        @mouseleave="!isMobile ? (active = null) : null"
       >
         <RouterLink
           :to="`/project/${project.id}`"
@@ -21,8 +21,8 @@
           :style="{ transform: cardTransforms[index] }"
         >
           <span class="project-status">
-            <VueFeather 
-              type="circle" 
+            <VueFeather
+              type="circle"
               :fill="project.status === 'Completed' ? 'green' : 'yellow'"
               :stroke="project.status === 'Completed' ? 'green' : 'yellow'"
               size="12"
@@ -33,8 +33,8 @@
           <img :src="project.img" alt="Projects" class="card-image" />
         </RouterLink>
 
-        <div 
-          class="panel" 
+        <div
+          class="panel"
           :class="{ 'panel-mobile-visible': isMobile }"
           v-if="active === index || isMobile"
         >
@@ -45,38 +45,37 @@
               <font-awesome-icon
                 :icon="techIcons[tech]"
                 size="sm"
-                :style="{ 
-                  color: techColors[tech], 
-                  marginRight: '6px' 
+                :style="{
+                  color: techColors[tech],
+                  marginRight: '6px',
                 }"
               />
               {{ tech }}
             </li>
           </ul>
-
         </div>
-
       </div>
     </div>
 
+    <Teackstack />
   </section>
-  <Teackstack/>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from "vue";
 import Teackstack from "../components/Teackstack.vue";
 
-import apexmotor from '../../public/projects/apexmotor.png'
-import venubooking from '../../public/projects/venubooking.png'
-import portfolio from '../../public/projects/portfolio.png'
+import apexmotor from "../../public/projects/apexmotor.png";
+import venubooking from "../../public/projects/venubooking.png";
+import portfolio from "../../public/projects/portfolio.png";
 
 const projects = [
-  { 
+  {
     id: 1,
     img: apexmotor,
     title: "ApexMotor",
-    description: "A website where users can buy and sell cars.",
+    description:
+      "A full-stack car marketplace built with a component-based UI, real-time data handling, and authentication for user actions like listing and purchasing vehicles.",
     tech: ["React", "Tailwind", "Firebase"],
     status: "Completed",
   },
@@ -84,27 +83,30 @@ const projects = [
     id: 2,
     img: venubooking,
     title: "VenuBooking",
-    description: "A platform to book event tickets quickly and easily.",
-    tech: ["React", "Node", "Tailwind"],
+    description:
+      "An event ticket booking system with RESTful APIs, backend logic for reservations, and a relational database to manage users, events, and transactions.",
+    tech: ["React", "Node", "Tailwind", "Mysql"],
     status: "In Progress",
   },
   {
     id: 3,
     img: portfolio,
     title: "Portfolio",
-    description: "A personal website showcasing my skills and projects.",
+    description:
+      "A performance-optimized personal portfolio built with modern animations, responsive layouts, and reusable components to showcase projects and skills.",
     tech: ["Vue", "GSAP", "Tailwind"],
     status: "Completed",
-  }
-]
+  },
+];
 
 const techIcons = {
-  React: ['fab', 'react'],
-  Tailwind: ['fas', 'wind'],
-  Firebase: ['fas', 'fire'],
-  Node: ['fab', 'node-js'],
-  Vue: ['fab', 'vuejs'],
-  GSAP: ['fas', 'bolt'],
+  React: ["fab", "react"],
+  Tailwind: ["fas", "wind"],
+  Firebase: ["fas", "fire"],
+  Node: ["fab", "node-js"],
+  Vue: ["fab", "vuejs"],
+  GSAP: ["fas", "bolt"],
+  Mysql: ["fas", "database"],
 };
 
 const techColors = {
@@ -113,46 +115,48 @@ const techColors = {
   Firebase: "#f97316",
   Node: "#68a063",
   Vue: "#42b883",
+  Mysql: "#00758F",
 };
 
-
-const active = ref(null)
-const isMobile = ref(false)
+const active = ref(null);
+const isMobile = ref(false);
 
 const checkMobile = () => {
-  isMobile.value = window.innerWidth < 640
-}
+  isMobile.value = window.innerWidth < 640;
+};
 
 onMounted(() => {
-  checkMobile()
-  window.addEventListener('resize', checkMobile)
-})
+  checkMobile();
+  window.addEventListener("resize", checkMobile);
+});
 
-const cardTransforms = ref(projects.map(() => ''))
-const maxRotation = 20
+const cardTransforms = ref(projects.map(() => ""));
+const maxRotation = 20;
 
 const handleMouseMove = (e, index) => {
-  if (isMobile.value) return 
+  if (isMobile.value) return;
 
-  const rect = e.currentTarget.getBoundingClientRect()
-  const x = e.clientX - rect.left
-  const y = e.clientY - rect.top
-  const centerX = rect.width / 2
-  const centerY = rect.height / 2
+  const rect = e.currentTarget.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
 
-  const rotateX = (centerY - y) / (rect.height / (2 * maxRotation))
-  const rotateY = (x - centerX) / (rect.width / (2 * maxRotation))
+  const rotateX = (centerY - y) / (rect.height / (2 * maxRotation));
+  const rotateY = (x - centerX) / (rect.width / (2 * maxRotation));
 
-  cardTransforms.value[index] = 
-    `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`
-}
+  cardTransforms.value[
+    index
+  ] = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+};
 
 const handleMouseLeave = (index) => {
-  if (isMobile.value) return
-  
-  cardTransforms.value[index] =
-    `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`
-}
+  if (isMobile.value) return;
+
+  cardTransforms.value[
+    index
+  ] = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+};
 </script>
 
 <style scoped>
@@ -170,7 +174,7 @@ const handleMouseLeave = (index) => {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  
+
   border-radius: 10px;
   position: relative;
 }
@@ -196,10 +200,8 @@ const handleMouseLeave = (index) => {
 .card-image {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* important for PNG */
+  object-fit: contain; 
   transition: filter 0.25s ease;
-  filter: drop-shadow(0 0 0px transparent);
-  filter: drop-shadow(0 0 6px rgba(214, 214, 255, 0.2));
 }
 
 /* hover */
@@ -230,10 +232,10 @@ const handleMouseLeave = (index) => {
   padding: 10px;
   white-space: nowrap;
   transform: translateY(10px);
-  animation: slide .2s ease;
+  animation: slide 0.2s ease;
   background: rgba(41, 41, 41, 0.917);
   backdrop-filter: blur(2px);
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -244,15 +246,21 @@ const handleMouseLeave = (index) => {
 }
 
 @keyframes slide {
-  from { opacity: 0; transform: translateY(0); }
-  to { opacity: 1; transform: translateY(10px); }
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(10px);
+  }
 }
 
 /* project-status at right top realitive */
 .project-status {
   position: absolute;
   display: flex;
-  align-items: center;    /* vertical center */
+  align-items: center; /* vertical center */
   justify-content: center;
   gap: 5px;
   top: 10px;
@@ -298,10 +306,9 @@ const handleMouseLeave = (index) => {
 }
 
 /* Mobile Specific Overrides */
-@media (max-width: 639px) { 
-
+@media (max-width: 639px) {
   .project-card-wrapper {
-    background: rgba(255, 255, 255, 0.1); 
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
   }
 
@@ -314,7 +321,7 @@ const handleMouseLeave = (index) => {
     transform: none;
     animation: none;
     width: 100%;
-    margin-top: -10px; 
+    margin-top: -10px;
     padding: 15px 10px;
     border-radius: 10px;
   }
@@ -323,9 +330,8 @@ const handleMouseLeave = (index) => {
     backdrop-filter: none;
   }
   .interactive-card {
-    border-radius: 10px 10px 0 0 ;
+    border-radius: 10px 10px 0 0;
     background: rgba(255, 255, 255, 0.1);
   }
-
 }
 </style>
