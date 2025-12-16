@@ -3,7 +3,7 @@
 Welcome to my personal developer portfolio!  
 This website showcases my projects, skills, experience, and the journey I'm building as a full-stack developer.
 
-Live Website: **<https://chunvisal.me>**  
+Live Website: **<https://chunvisal.pro>**  
 Frontend: Vue 3 + Vite  
 Backend: Node.js (JSON storage system)
 
