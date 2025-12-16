@@ -4,20 +4,20 @@ import apexmotor3 from "../assets/project/apexmotor3.png";
 import apexmotorLogo from "../assets/project/apexmotorlogo.png";
 
 import venubooking1 from "../assets/project/venubooking1.png";
-import venubooking2 from "../assets/project/venubooking2.png";  
+import venubooking2 from "../assets/project/venubooking2.png";
 import venubookingLogo from "../assets/project/venubookinglogo.png";
 
 import visal from "../assets/project/visal.jpg";
 import visal1 from "../assets/project/visal1.jpg";
-import visallogo from "../assets/project/visallogo.png"
-import visalcode from "../assets/project/visalcode.png"
+import visallogo from "../assets/project/visallogo.png";
+import visalcode from "../assets/project/visalcode.png";
 
 export const projects = [
   {
     id: 1,
     title: "ApexMotor",
     thumbnail: apexmotor1,
-    images: [apexmotor2, apexmotor3, apexmotor3], 
+    images: [apexmotor2, apexmotor3, apexmotor3],
     shortDescription: "A website where users can buy and sell cars.",
     logoBrand: apexmotorLogo,
     longDescription:
@@ -26,7 +26,7 @@ export const projects = [
     features: [
       "User authentication",
       "Car listing system",
-      "Realtime database updates", 	
+      "Realtime database updates",
       "Responsive UI",
     ],
     github: "https://github.com/JoeNarthan/apexmotor",
@@ -68,8 +68,8 @@ export const projects = [
   {
     id: 3,
     title: "Portfolio - Chun Visal",
-    thumbnail:  visalcode, 
-    images: [visal1, visalcode], 
+    thumbnail: visal1,
+    images: [visal1, visalcode],
     logoBrand: visallogo,
     shortDescription: "A personal website showcasing my skills and projects.",
     longDescription:
@@ -97,6 +97,5 @@ export const projects = [
       "Reusable UI components",
       "Page transitions & routing",
     ],
-  }
-
+  },
 ];
