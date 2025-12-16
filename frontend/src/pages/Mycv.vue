@@ -2,19 +2,6 @@
 import { ref, } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-const isImageModalOpen = ref(false);
-const modalImage = ref(null);
-
-const openImageModal = (src) => {
-  modalImage.value = src;
-  isImageModalOpen.value = true;
-};
-
-const closeImageModal = () => {
-  isImageModalOpen.value = false;
-  modalImage.value = null;
-};
-
 const macDots = [
   'bg-[#ff5f57]', // Red
   'bg-[#ffbd2e]', // Yellow
@@ -239,20 +226,6 @@ const softSkills = [
                         />
                         <span class="mt-2 text-[10px] text-[#6b7280] whitespace-nowrap">src/assets/project/profile.jpg</span>
                     </div>
-                                <Teleport to="body">
-  <div
-    v-if="isImageModalOpen"
-    class="modal-overlay"
-    @click="closeImageModal"
-  >
-    <img
-      :src="modalImage"
-      class="modal-image"
-      @click.stop
-    />
-  </div>
-</Teleport>
-           
                     <div class="flex-1 w-full lg:w-auto order-first lg:order-0">
                         <div class="">
                             <div class="text-[#6b7280] italic">// Constructor - Developer Profile</div>
@@ -464,7 +437,7 @@ const softSkills = [
                                 </div>
                             </div>
                         </router-link>
-
+                        
                     </div>
                 </div>
             
