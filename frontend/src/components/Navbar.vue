@@ -8,8 +8,8 @@
 
     <div class="right-actions">
       <RouterLink to="/mycv" class="cv-btn">
-        <VueFeather type="user" class="icon-spacing" size="14"/>
-        CV
+        <VueFeather type="user" class="icon-spacing" size="16"/>
+        Resume
       </RouterLink>
     </div>
   </div>
@@ -142,7 +142,7 @@ onUnmounted(() => {
   cursor: pointer;
   z-index: 200;
   border-radius: 5px;
-  padding: 8px;
+  padding: 10px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(2px);
   pointer-events: auto;
@@ -227,10 +227,10 @@ onUnmounted(() => {
   cursor: pointer;
   display: flex;
   align-items: center;
-  padding: 6px 10px;
+  padding: 5px 15px;
   gap: 3px;
   border-radius: 5px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
   background: rgba(255, 255, 255, 0.1);

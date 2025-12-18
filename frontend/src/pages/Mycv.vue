@@ -150,7 +150,7 @@ const softSkills = [
                             Full Stack Developer
                         </span>
                     </div>
-                    <a href="/public/chunvisal.pdf" download>
+                    <a href="/ChunVisalResume.pdf" download>
                     <button class="flex cursor-pointer items-center gap-2 bg-[#3b2b5f]/60 border border-[#6e5a9c]/40 px-3 py-1 rounded-lg transition hover:bg-[#4b3c73]/70">
                         <span class="font-mono text-xs sm:text-sm">
                             <span class="text-yellow-300">download</span>
@@ -222,7 +222,6 @@ const softSkills = [
                             :src="profileImg" 
                             alt="Chun Visal Profile" 
                             class="w-auto h-32 sm:w-full sm:h-auto rounded-sm border-2 border-pink-400/50 p-1 cursor-pointer transition transform hover:scale-[1.05]"
-                            @click="openImageModal"
                         />
                         <span class="mt-2 text-[10px] text-[#6b7280] whitespace-nowrap">src/assets/project/profile.jpg</span>
                     </div>
@@ -560,26 +559,6 @@ const softSkills = [
                 </div>
             </div>
         </div>
-
-        <transition name="fade">
-            <div 
-                v-if="isImageModalOpen" 
-                class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 transition-opacity"
-                @click="closeImageModal"
-            >
-                <button class="absolute top-4 right-4 text-white text-3xl font-bold p-2 z-50 hover:text-red-400 transition">
-                    &times;
-                </button>
-
-                <div class="relative max-w-full max-h-full p-4" @click.stop>
-                    <img 
-                        src="../../src/assets/project/profile.jpg" 
-                        alt="Chun Visal Profile Large" 
-                        class="max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl h-auto rounded-lg border-4 border-pink-400 shadow-2xl transition transform scale-100"
-                    />
-                </div>
-            </div>
-        </transition>
     </div>
 </template>
 

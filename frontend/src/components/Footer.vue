@@ -90,7 +90,7 @@
           <ul>
             <li>
               <a
-                href="/public/chunvisal.pdf"
+                href="/ChunVisalResume.pdf" 
                 download
                 class="flex items-center gap-2"
               >
@@ -278,7 +278,7 @@ const submitComment = async () => {
   overflow: hidden;
 }
 .grid {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
 }
