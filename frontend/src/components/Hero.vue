@@ -23,9 +23,13 @@
         <div class="headlines">
           <h1 class="main-headline">
             <span class="line line-1">Building Digital</span>
-            <span class="line line-2 glitch" data-text="Experiences"
-              >Experiences</span
-            >
+            <span class="line line-2 glitch" data-text="Experiences">
+              <span>Experiences</span>
+              <div class="">
+                <video src="/cambodiaflag.mp4" autoplay muted loop playsinline
+                  class="w-20 h-10 object-cover"></video>
+              </div>
+            </span>
           </h1>
 
           <h2 class="sub-headline">
@@ -55,42 +59,27 @@
 
           <div class="tech-items">
             <span class="tech-item">
-              <font-awesome-icon
-                :icon="['fab', 'react']"
-                style="color: #61dbfb"
-              />
+              <font-awesome-icon :icon="['fab', 'react']" style="color: #61dbfb" />
               React
             </span>
 
             <span class="tech-item">
-              <font-awesome-icon
-                :icon="['fab', 'vuejs']"
-                style="color: #41b883"
-              />
+              <font-awesome-icon :icon="['fab', 'vuejs']" style="color: #41b883" />
               Vue JS
             </span>
 
             <span class="tech-item">
-              <font-awesome-icon
-                :icon="['fab', 'node-js']"
-                style="color: #3c873a"
-              />
+              <font-awesome-icon :icon="['fab', 'node-js']" style="color: #3c873a" />
               Node.js
             </span>
 
             <span class="tech-item">
-              <font-awesome-icon
-                :icon="['fas', 'database']"
-                style="color: #0078d4"
-              />
+              <font-awesome-icon :icon="['fas', 'database']" style="color: #0078d4" />
               SQL
             </span>
 
             <span class="tech-item">
-              <font-awesome-icon
-                :icon="['fas', 'fire']"
-                style="color: #ffa611"
-              />
+              <font-awesome-icon :icon="['fas', 'fire']" style="color: #ffa611" />
               Firebase
             </span>
           </div>
@@ -277,7 +266,9 @@ const scrollTofooter = () => {
 }
 
 .line {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .line-2 {
@@ -286,6 +277,7 @@ const scrollTofooter = () => {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
 .glitch::before {
   content: attr(data-text);
   position: absolute;
@@ -301,20 +293,24 @@ const scrollTofooter = () => {
 }
 
 @keyframes noisePulse {
+
   0%,
   96%,
   100% {
     opacity: 0;
     transform: none;
   }
+
   97% {
     opacity: 1;
     transform: translate(1px, -1px) scaleX(1.02);
   }
+
   98% {
     opacity: 1;
     transform: translate(-1px, 1px) scaleX(0.98);
   }
+
   99% {
     opacity: 1;
     transform: translate(0px, 0px) scaleX(1.02);
@@ -323,7 +319,7 @@ const scrollTofooter = () => {
 
 .glitch {
   position: relative;
-  display: inline-block;
+  display: flex;
   color: white;
   font-weight: 900;
 }
@@ -378,95 +374,115 @@ const scrollTofooter = () => {
 
 /* animations */
 @keyframes glitchA {
+
   0%,
   88% {
     opacity: 0;
     transform: none;
   }
+
   90% {
     opacity: 1;
     transform: translate(-3px, -1px);
   }
+
   92% {
     opacity: 1;
     transform: translate(2px, 1px);
   }
+
   94% {
     opacity: 0;
   }
 }
 
 @keyframes glitchB {
+
   0%,
   90% {
     opacity: 0;
     transform: none;
   }
+
   92% {
     opacity: 1;
     transform: translate(3px, -1px);
   }
+
   94% {
     opacity: 1;
     transform: translate(-2px, 1px);
   }
+
   96% {
     opacity: 0;
   }
 }
 
 @keyframes glitchC {
+
   0%,
   93% {
     opacity: 0;
     transform: none;
   }
+
   94% {
     opacity: 1;
     transform: skewX(10deg);
   }
+
   95% {
     opacity: 1;
     transform: skewX(-10deg);
   }
+
   96% {
     opacity: 0;
   }
 }
 
 @keyframes glitchD {
+
   0%,
   92% {
     opacity: 0;
     transform: none;
   }
+
   93% {
     opacity: 1;
     transform: translateY(-2px);
   }
+
   94% {
     opacity: 1;
     transform: translateY(2px);
   }
+
   95% {
     opacity: 0;
   }
 }
 
 @keyframes glitchE {
+
   0%,
   92% {
     opacity: 0;
     transform: none;
   }
+
   93% {
     opacity: 1;
     transform: translateX(2px);
   }
+
   94% {
     opacity: 1;
     transform: translateX(-2px);
   }
+
   95% {
     opacity: 0;
   }
@@ -485,6 +501,7 @@ const scrollTofooter = () => {
   color: rgba(255, 255, 255, 0.7);
   max-width: 450px;
 }
+
 .cta-buttons {
   display: flex;
   flex-wrap: nowrap !important;
@@ -511,7 +528,8 @@ const scrollTofooter = () => {
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  background: linear-gradient(135deg, #5f75e3, #6d44a0); /* slightly darker */
+  background: linear-gradient(135deg, #5f75e3, #6d44a0);
+  /* slightly darker */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
 }
 
@@ -552,9 +570,12 @@ const scrollTofooter = () => {
 }
 
 .tech-item {
-  display: flex; /* 🔥 makes centering possible */
-  justify-content: center; /* horizontal center */
-  align-items: center; /* vertical center */
+  display: flex;
+  /* 🔥 makes centering possible */
+  justify-content: center;
+  /* horizontal center */
+  align-items: center;
+  /* vertical center */
 
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(2px);
@@ -617,9 +638,11 @@ const scrollTofooter = () => {
 .window-dots span:nth-child(1) {
   background: #ff5f57;
 }
+
 .window-dots span:nth-child(2) {
   background: #ffbd2e;
 }
+
 .window-dots span:nth-child(3) {
   background: #28ca42;
 }
@@ -716,9 +739,11 @@ const scrollTofooter = () => {
   0% {
     transform: translateX(-50%) translateY(0) rotate(45deg);
   }
+
   50% {
     transform: translateX(-50%) translateY(6px) rotate(45deg);
   }
+
   100% {
     transform: translateX(-50%) translateY(0) rotate(45deg);
   }
@@ -730,6 +755,7 @@ const scrollTofooter = () => {
     padding: 1rem 0.5rem;
     min-height: 90vh;
   }
+
   .orb-1 {
     top: 80%;
     left: 10%;

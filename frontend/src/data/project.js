@@ -68,8 +68,8 @@ export const projects = [
   {
     id: 3,
     title: "Portfolio - Chun Visal",
-    thumbnail: visal1,
-    images: [visal1, visalcode],
+    thumbnail: visal,
+    images: [visal, visalcode],
     logoBrand: visallogo,
     shortDescription: "A personal website showcasing my skills and projects.",
     longDescription:
