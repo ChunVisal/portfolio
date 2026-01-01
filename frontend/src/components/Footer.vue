@@ -51,7 +51,7 @@
         <div class="footer-col social-col">
           <h3 class="col-title">CONNECT</h3>
           <div class="social-links column-links">
-            <a href="https://github.com/JoeNarthan" target="_blank">
+            <a href="https://github.com/ChunVisal" target="_blank">
               <font-awesome-icon
                 :icon="['fab', 'github']"
                 style="color: #c9c9c9"

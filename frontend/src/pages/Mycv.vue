@@ -110,7 +110,7 @@ const contactData = [
     { icon: ['fas', 'envelope'], text: 'vsal0882@gmail.com', color: 'text-sky-400' },
     { icon: ['fas', 'globe'], text: 'chunvisal.com', color: 'text-sky-400' },
     { icon: ['fas', 'location-dot'], text: 'Phnom Penh, Cambodia', color: 'text-sky-400' },
-    { icon: ['fab', 'github'], text: 'github.com/JoeNarthan', color: 'text-white' },
+    { icon: ['fab', 'github'], text: 'github.com/ChunVisal', color: 'text-white' },
     { icon: ['fab', 'linkedin'], text: 'LinkedIn', color: 'text-sky-400' },
 ];
 

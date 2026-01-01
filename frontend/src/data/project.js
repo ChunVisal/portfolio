@@ -29,7 +29,7 @@ export const projects = [
       "Realtime database updates",
       "Responsive UI",
     ],
-    github: "https://github.com/JoeNarthan/apexmotor",
+    github: "https://github.com/ChunVisal/apexmotor",
     demo: "https://apexmotor.shop",
     status: "Completed",
     date: "2024",
@@ -84,7 +84,7 @@ export const projects = [
       "Clean and modern UI components",
     ],
 
-    github: "https://github.com/JoeNarthan/portfolio",
+    github: "https://github.com/ChunVisal/portfolio",
     demo: "https://chunvisal.pro",
 
     status: "Completed",
