@@ -30,7 +30,7 @@ export const projects = [
       "Responsive UI",
     ],
     github: "https://github.com/ChunVisal/apexmotor",
-    demo: "https://apexmotor.netlify.app",
+    demo: "https://apexmotor.shop",
     status: "Completed",
     date: "2024",
     whatILearned: [
