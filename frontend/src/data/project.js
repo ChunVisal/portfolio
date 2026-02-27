@@ -30,7 +30,7 @@ export const projects = [
       "Responsive UI",
     ],
     github: "https://github.com/ChunVisal/apexmotor",
-    demo: "https://apexmotor.shop",
+    demo: "https://apexmotor.netlify.app",
     status: "Completed",
     date: "2024",
     whatILearned: [
@@ -55,8 +55,8 @@ export const projects = [
       "Admin dashboard",
       "QR code ticket verification",
     ],
-    // github: "https://github.com/yourgithub/portfolio",
-    // demo: "https://yourdomain.com",
+    github: "https://github.com/ChunVisal/venubooking",
+    demo: "https://venubooking.netlify.app",
     status: "In Progress",
     date: "2025",
     whatILearned: [
