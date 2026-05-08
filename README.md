@@ -61,7 +61,7 @@ Backend: Node.js (JSON storage system)
 
 ### **Deployment**
 
-- **Frontend** → Vercel  
+- **Frontend** → Netlify  
 - **Backend** → Render  
 - **Domain** → chunvisal.pro  
 
