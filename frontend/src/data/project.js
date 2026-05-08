@@ -5,10 +5,11 @@ import apexmotorLogo from "../assets/project/apexmotorlogo.png";
 
 import venubooking1 from "../assets/project/venubooking1.png";
 import venubooking2 from "../assets/project/venubooking2.png";
+import venubooking3 from "../assets/project/venubooking3.png";
 import venubookingLogo from "../assets/project/venubookinglogo.png";
 
 import visal from "../assets/project/visal.jpg";
-import visal1 from "../assets/project/visal1.jpg";
+import uniform from "../../public/hobbies/uniform.png";
 import visallogo from "../assets/project/visallogo.png";
 import visalcode from "../assets/project/visalcode.png";
 
@@ -17,52 +18,92 @@ export const projects = [
     id: 1,
     title: "ApexMotor",
     thumbnail: apexmotor1,
-    images: [apexmotor2, apexmotor3, apexmotor3],
-    shortDescription: "A website where users can buy and sell cars.",
+    images: [apexmotor2, apexmotor3],
     logoBrand: apexmotorLogo,
+    shortDescription:
+      "Car marketplace where users can buy, sell, and explore vehicles with real-time updates.",
     longDescription:
-      "ApexMotor is a modern platform for car enthusiasts where users can buy, sell, and explore vehicles. Built with React and Firebase, it provides realtime updates and smooth UI with Tailwind.",
-    tech: ["React", "Tailwind", "Firebase"],
+      "ApexMotor is a modern car marketplace with secure Auth0 + Google login, full CRUD listings, real-time Firebase updates, Cloudinary image optimization, SEO, Google Analytics, and a custom domain. Connects buyers and sellers seamlessly.",
+    tech: [
+      "React",
+      "Tailwind CSS",
+      "Firebase Realtime DB",
+      "Auth0 (Google Auth)",
+      "Cloudinary",
+      "JWT",
+      "Google Analytics",
+      "Custom Domain",
+    ],
     features: [
-      "User authentication",
-      "Car listing system",
-      "Realtime database updates",
-      "Responsive UI",
+      "Auth0 + Google authentication",
+      "Full CRUD car listings",
+      "Real-time database updates",
+      "User-to-user contact system",
+      "Cloudinary image optimization",
+      "SEO optimized (Google Console)",
+      "Google Analytics tracking",
+      "Custom domain (apexmotor.shop)",
+      "Responsive design",
+      "Image lazy loading",
     ],
     github: "https://github.com/ChunVisal/apexmotor",
     demo: "https://apexmotor.shop",
-    status: "Completed",
+    status: "Live",
     date: "2024",
     whatILearned: [
-      "State management with React",
-      "Using RESTfull Firebase Realtime DB",
-      "Responsive design with Tailwind",
+      "Auth0 & Google OAuth integration",
+      "Firebase Realtime DB structure",
+      "Cloudinary image CDN",
+      "SEO best practices & Google Console",
+      "Custom domain configuration",
+      "User-to-user messaging flow",
+      "Analytics implementation",
     ],
   },
 
   {
     id: 2,
-    title: "VenuBooking",
+    title: "VenuBooking (Event Platform)",
     thumbnail: venubooking1,
-    images: [venubooking2, venubooking2],
-    shortDescription: "A platform to book event tickets quickly and easily.",
+    images: [venubooking2, venubooking3],
     logoBrand: venubookingLogo,
+    shortDescription:
+      "Full-stack event booking platform with secure payments and real-time ticket generation.",
     longDescription:
-      "VenuBooking was built to make event ticket booking fast and seamless. Integrates with Node.js backend, uses Tailwind for UI, and React for interactive components.",
-    tech: ["React", "Node", "Tailwind", "Mysql"],
+      "VenuBooking lets users discover events, book tickets, and pay online. Event organizers can create and manage events. Built from scratch with React, Node.js, PostgreSQL, and Stripe.",
+    tech: [
+      "React (Vite)",
+      "Node.js (Express)",
+      "PostgreSQL (Neon)",
+      "Tailwind CSS",
+      "Stripe API",
+      "Cloudinary",
+      "Render / Netlify",
+    ],
     features: [
-      "Ticket booking system",
-      "Admin dashboard",
-      "QR code ticket verification",
+      "Secure user auth (Email + Google 0Auth)",
+      "Event CRUD for organizers",
+      "Advanced search & pagination (Infinite scroll)",
+      "Stripe payment integration",
+      "Unique ticket code generation",
+      "Real-time notification center",
+      "Personalized wishlist",
+      "Interactive event maps (Leaflet)",
+      "Dark mode & fully responsive UI",
+      "Role-based access control",
     ],
     github: "https://github.com/ChunVisal/venubooking",
     demo: "https://venubooking.netlify.app",
-    status: "In Progress",
+    status: "Live & Complete",
     date: "2025",
     whatILearned: [
-      "Building scalable backend with Node",
-      "API integration",
-      "UI flow design",
+      "Architecting and deploying a full-stack app from scratch.",
+      "Integrating a third-party payment gateway (Stripe) securely.",
+      "Managing complex database relationships (PostgreSQL).",
+      "Implementing secure authentication and authorization (JWT).",
+      "Creating a real-time notification system.",
+      "Optimizing frontend performance with lazy loading and code splitting.",
+      "Deploying frontend (Netlify), backend (Render), and database (Neon) independently.",
     ],
   },
   {
@@ -71,31 +112,30 @@ export const projects = [
     thumbnail: visal,
     images: [visal, visalcode],
     logoBrand: visallogo,
-    shortDescription: "A personal website showcasing my skills and projects.",
+    shortDescription:
+      "Personal portfolio website showcasing my skills, projects, and journey as a developer.",
     longDescription:
-      "This is my full personal portfolio built with Vue, GSAP animations, and Tailwind CSS. It includes my projects, skills, experience, and a modern interactive UI with smooth transitions and responsive layout.",
-
-    tech: ["Vue", "GSAP", "Tailwind"],
-
+      "My personal portfolio built with Vue 3, GSAP animations, and Tailwind CSS. Features smooth page transitions, dynamic project routing, and a modern responsive layout. Optimized for SEO with meta tags and Google Console integration to improve discoverability. The site reflects my design philosophy: clean, fast, and user-friendly.",
+    tech: ["Vue 3", "GSAP", "Tailwind CSS", "Vue Router", "SEO"],
     features: [
-      "Fully responsive design",
-      "Dynamic project routing",
-      "Smooth GSAP page animations",
-      "Clean and modern UI components",
+      "GSAP scroll animations",
+      "Smooth page transitions",
+      "Dynamic project routes",
+      "Fully responsive",
+      "SEO optimized",
+      "Google Console verified",
+      "Clean modern UI",
     ],
-
     github: "https://github.com/ChunVisal/portfolio",
     demo: "https://chunvisal.pro",
-
-    status: "Completed",
+    status: "Live",
     date: "2025",
-
     whatILearned: [
-      "GSAP animation timeline",
-      "Vue component structure",
-      "Responsive layout fundamentals",
-      "Reusable UI components",
+      "GSAP animation timelines",
+      "Vue 3 composition API",
+      "SEO best practices",
       "Page transitions & routing",
+      "Responsive design patterns",
     ],
   },
 ];

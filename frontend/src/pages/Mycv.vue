@@ -18,14 +18,14 @@ const macDots = [
 import apexmotorLogo from "../assets/project/apexmotorlogo.png";
 import venubookingLogo from "../assets/project/venubookinglogo.png";
 import portfolioLogo from "../assets/project/visallogo.png";
-import profileImg from "../assets/project/visal.jpg"
+import uniform from "../../public/hobbies/uniform.png";
 
 const projects = [
     {
         id: 1,
         title: "ApexMotor",
         description: "A comprehensive e-commerce platform for selling car parts, featuring full CRUD functionality and user authentication.",
-        tech: ["React.js", "Express.js", "Node.js", "Firebase", "Tailwind CSS"],
+        tech: ["React.js", "Express.js", "Node.js", "Firebase", "Tailwind CSS", "Cloudinary"],
         logo: apexmotorLogo,
         status: "Completed",
         gridStyle: "md:col-span-1 md:row-span-1 lg:col-span-2 lg:row-span-1" // Example grid spanning 2 columns on large screens
@@ -34,16 +34,16 @@ const projects = [
         id: 2,
         title: "VenuBooking",
         description: "A venue reservation platform designed to streamline event planning and booking processes.",
-        tech: ["Vue.js", "Node.js", "SQL", "Tailwind CSS"],
+        tech: ["React.js", "Node.js", "SQL", "Tailwind CSS", "Cloudinary", "Stripe"],
         logo: venubookingLogo,
-        status: "Progress",
+        status: "Completed",
         gridStyle: "md:col-span-1 md:row-span-1 lg:col-span-1 lg:row-span-2"
     },
     {
         id: 3,
         title: "Portfolio",
         description: "This very developer profile, designed as a creative CLI/IDE interface to showcase skills and projects.",
-        tech: ["Vue.js", "Tailwind CSS"],
+        tech: ["Vue.js", "Tailwind CSS", "Express.js", "Node.js", "Netlify"],
         logo: portfolioLogo,
         status: "Completed",
         gridStyle: "md:col-span-1 md:row-span-1 lg:col-span-1 lg:row-span-2"
@@ -108,7 +108,7 @@ const languageArray = Array.from(languages, ([language, fluency]) => ({ language
 const contactData = [
     { icon: ['fas', 'phone'], text: '+855 888 093 342', color: 'text-sky-400' },
     { icon: ['fas', 'envelope'], text: 'vsal0882@gmail.com', color: 'text-sky-400' },
-    { icon: ['fas', 'globe'], text: 'chunvisal.com', color: 'text-sky-400' },
+    { icon: ['fas', 'globe'], text: 'https://chunvisal.pro', color: 'text-sky-400' },
     { icon: ['fas', 'location-dot'], text: 'Phnom Penh, Cambodia', color: 'text-sky-400' },
     { icon: ['fab', 'github'], text: 'github.com/ChunVisal', color: 'text-white' },
     { icon: ['fab', 'linkedin'], text: 'LinkedIn', color: 'text-sky-400' },
@@ -224,7 +224,7 @@ const softSkills = [
 
                     <div
                         class="flex flex-col items-center justify-center w-full lg:w-1/5 max-w-xs lg:max-w-auto mr-0 lg:mr-6">
-                        <img :src="profileImg" alt="Chun Visal Profile" @click="showPreview = true"
+                        <img :src="uniform" alt="Chun Visal Profile" @click="showPreview = true"
                             class="w-auto h-31 sm:w-full sm:h-auto rounded-sm border-2 border-pink-400/50 p-1 cursor-pointer transition transform hover:scale-[1.05]" />
                         <span
                             class="mt-2 text-[10px] text-[#6b7280] whitespace-nowrap">src/assets/project/profile.jpg</span>
@@ -240,7 +240,7 @@ const softSkills = [
                             </button>
 
                             <!-- Image -->
-                            <img :src="profileImg" alt="Profile Preview"
+                            <img :src="uniform" alt="Profile Preview"
                                 class="max-w-[90vw] max-h-[90vh] rounded-lg shadow-2xl" />
                         </div>
                     </Teleport>

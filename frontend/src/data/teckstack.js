@@ -37,6 +37,12 @@ const techMap = {
     info: "Responsive interfaces are created with Tailwind utilities, custom themes, breakpoints (sm–xl), spacing systems, and layout utilities for clean, scalable UI design.",
   },
 
+  Bootstrap: {
+    icon: ["fab", "bootstrap"],
+    color: "#7952B3",
+    info: "Bootstrap's grid system, components, and utility classes are used to build responsive, mobile-first interfaces with consistent styling and behavior.",
+  },
+
   // Backend
   "Node.js": {
     icon: ["fab", "node-js"],
@@ -112,6 +118,30 @@ const techMap = {
     color: "#FF9900",
     info: "Cloud services and deployment concepts are currently being explored to expand backend and infrastructure knowledge.",
   },
+
+  Netlify: {
+    icon: ["fas", "cloud"],
+    color: "#00C7B7",
+    info: "Netlify is being explored for its continuous deployment capabilities and serverless functions to streamline frontend hosting.",
+  },
+
+  Render: {
+    icon: ["fas", "cloud"],
+    color: "#FF3E00",
+    info: "Render is being explored for its ease of use in deploying full-stack applications and managing backend services.",
+  },
+
+  "Google Tools": {
+    icon: ["fab", "google"],
+    color: "#4285F4",
+    info: "Google Tools are being explored for their integration capabilities and cloud-based services to enhance development workflows.",
+  },
+
+  Neon: {
+    icon: ["fas", "cloud"],
+    color: "#00C7B7",
+    info: "Neon is being explored for its real-time database capabilities and seamless integration with modern web applications.",
+  }
 };
 
 export default techMap

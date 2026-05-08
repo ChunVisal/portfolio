@@ -3,22 +3,13 @@
     <div class="scroll-clip">
       <div class="tag-list">
         <div v-for="n in 2" :key="n" class="tech-group">
-          <div
-            v-for="tech in allTech"
-            :key="`${tech}-${n}`"
-            class="tech-card-container"
-            @mouseenter="activeTech = tech"
-            @mouseleave="activeTech = null"
-            @mousemove="updateTooltip"
-          >
+          <div v-for="tech in allTech" :key="`${tech}-${n}`" class="tech-card-container" @mouseenter="activeTech = tech"
+            @mouseleave="activeTech = null" @mousemove="updateTooltip">
             <span class="tag">
               <div class="tag-content">
-                <font-awesome-icon
-                  :icon="getTech(tech).icon"
-                  size="xl"
-                  :style="{ color: getTech(tech).color }"
-                  class="tag-icon"
-                />
+                <!-- Use img for image URLs, i for Devicon classes -->
+                <img v-if="getTechIcon(tech).isImage" :src="getTechIcon(tech).src" class="tag-icon-img" />
+                <i v-else :class="getTechIcon(tech).class" class="tag-icon"></i>
                 <span class="tag-name">{{ tech }}</span>
               </div>
             </span>
@@ -34,19 +25,22 @@
     </div>
   </div>
 </template>
+
 <script setup>
 import { ref } from "vue";
-
 import techMap from "../data/teckstack";
+
 const activeTech = ref(null);
 const tooltipStyle = ref({});
 
 const allTech = ref([
+
   "HTML",
   "CSS",
   "JavaScript",
   "Vue",
   "React",
+  "ChatGPT",
   "Tailwind",
   "Node.js",
   "Express",
@@ -54,11 +48,17 @@ const allTech = ref([
   "Firebase",
   "Postman",
   "VS Code",
+  "Deepseek",
   "Figma",
   "Git",
+  "Netlify",
+  "Render",
+  "Google",
+  "Neon",
   "GitHub",
   "C",
   "C++",
+  "Gemini",
 ]);
 
 const updateTooltip = (e) => {
@@ -68,6 +68,45 @@ const updateTooltip = (e) => {
     left: e.clientX + 12 + "px",
     zIndex: 999999,
   };
+};
+
+// Get icon info (either Devicon class or image URL)
+const getTechIcon = (tech) => {
+  const imageMap = {
+    "Express": { isImage: true, src: "https://cdn.freebiesupply.com/logos/large/2x/logo-javascript-logo-black-and-white.png" },
+    "Figma": { isImage: true, src: "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" },
+    "Render": { isImage: true, src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnhOO5AFkxO-ekvEEueO--qU8hU3UDBm78ng&s" },
+    "GitHub": { isImage: true, src: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png" },
+    "Neon": { isImage: true, src: "https://s.yimg.com/os/en/globenewswire.com/ea84af8d46d14179febb234fa36d87ec" },
+    "Google": { isImage: true, src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/960px-Google_Favicon_2025.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" },
+    "C": { isImage: true, src: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/c-program-icon.png" },
+    "C++": { isImage: true, src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1920px-ISO_C%2B%2B_Logo.svg.png" },
+    "ChatGPT": { isImage: true, src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJI7dKa8PhJeeneF2OQwehzLo9fGQHBJ0LxA&s" },
+    "Deepseek": { isImage: true, src: "https://media.licdn.com/dms/image/sync/v2/D5627AQGEfKIDceLAfg/articleshare-shrink_800/articleshare-shrink_800/0/1738626850244?e=2147483647&v=beta&t=j5LlLrZ8aaBxmfZKBQrduak_VkQhgBAdz8KMGPK7W6A" },
+    "Gemini": { isImage: true, src: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-gemini-icon.png" },
+  };
+
+  const deviconMap = {
+    "HTML": "devicon-html5-plain colored",
+    "CSS": "devicon-css3-plain colored",
+    "JavaScript": "devicon-javascript-plain colored",
+    "Vue": "devicon-vuejs-plain colored",
+    "React": "devicon-react-original colored",
+    "Tailwind": "devicon-tailwindcss-plain colored",
+    "Node.js": "devicon-nodejs-plain colored",
+    "SQL": "devicon-mysql-plain colored",
+    "Firebase": "devicon-firebase-plain colored",
+    "Postman": "devicon-postman-plain colored",
+    "VS Code": "devicon-vscode-plain colored",
+    "Git": "devicon-git-plain colored",
+    "Netlify": "devicon-netlify-plain colored",
+  };
+
+  if (imageMap[tech]) {
+    return imageMap[tech];
+  }
+
+  return { isImage: false, class: deviconMap[tech] || "devicon-code-plain colored" };
 };
 
 const getTech = (name) => {
@@ -101,13 +140,11 @@ const getTech = (name) => {
 
 .scroll-clip {
   overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
+  mask-image: linear-gradient(to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent);
 }
 
 .tag-list {
@@ -129,7 +166,7 @@ const getTech = (name) => {
 
 @keyframes scroll {
   to {
-    transform: translateX(calc(-50% - 0.5rem));
+    transform: translateX(calc(-70% - 0.5rem));
   }
 }
 
@@ -150,7 +187,7 @@ const getTech = (name) => {
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.059);
 
   display: flex;
   align-items: center;
@@ -174,6 +211,13 @@ const getTech = (name) => {
 }
 
 .tag-icon {
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+.tag-icon-img {
+  width: 24px;
+  height: 24px;
   transition: transform 0.3s ease;
 }
 

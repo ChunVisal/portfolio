@@ -41,6 +41,7 @@ import {
   faFigma,
   faAws,
   faLinkedin,
+  faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
 
 // SOLID
@@ -96,7 +97,8 @@ library.add(
   faTrain,
   faRocket,
   faTelegram,
-  faCloud
+  faCloud,
+  faGoogle
 );
 
 const app = createApp(App);

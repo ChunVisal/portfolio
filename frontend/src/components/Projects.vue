@@ -3,6 +3,8 @@
     <h1 class="projects-title">
       <span>My, </span>
       <span>Projects</span>
+      <span> & </span>
+      <span>Tech Stack</span>
     </h1>
 
     <div class="projects-grid">
@@ -86,7 +88,7 @@ const projects = [
     description:
       "An event ticket booking system with RESTful APIs, backend logic for reservations, and a relational database to manage users, events, and transactions.",
     tech: ["React", "Node", "Tailwind", "Mysql"],
-    status: "In Progress",
+    status: "Completed",
   },
   {
     id: 3,
@@ -209,7 +211,7 @@ const handleMouseLeave = (index) => {
   filter: drop-shadow(0 0 12px rgba(213, 213, 255, 0.189));
 }
 
-.projects-title :nth-child(2) {
+.projects-title :nth-child(2), :nth-child(4) {
   font-weight: 700;
   letter-spacing: -0.02em;
   background: linear-gradient(135deg, #667eea, #764ba2);

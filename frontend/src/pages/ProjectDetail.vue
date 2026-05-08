@@ -8,13 +8,18 @@
         <img :src="activeImage" class="main-img" @click="openModal" />
 
         <div class="gallery">
-          <img
-            v-for="img in allProjectImages"
-            :src="img"
-            :key="img"
-            @click="activeImage = img"
-            class="thumb"
-          />
+          <img v-for="img in allProjectImages" :src="img" :key="img" @click="activeImage = img" class="thumb" />
+        </div>
+
+        <div class="section mt-4">
+          <h2>Features</h2>
+          <ul>
+            <li v-for="f in project.features" :key="f">
+              <VueFeather class="arrow-right" size="20" type="arrow-right" />{{
+                f
+              }}
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -29,22 +34,10 @@
         </div>
 
         <div class="links">
-          <a
-            v-if="project.demo"
-            :href="project.demo"
-            target="_blank"
-            class="btn primary"
-            >Live Demo</a
-          >
+          <a v-if="project.demo" :href="project.demo" target="_blank" class="btn primary">Live Demo</a>
           <div></div>
 
-          <a
-            v-if="project.github"
-            :href="project.github"
-            target="_blank"
-            class="btn secondary"
-            >GitHub</a
-          >
+          <a v-if="project.github" :href="project.github" target="_blank" class="btn secondary">GitHub</a>
         </div>
 
         <div class="section">
@@ -52,12 +45,8 @@
             <h2>Technologies</h2>
             <div class="tags">
               <span v-for="t in project.tech" :key="t">
-                <font-awesome-icon
-                  :icon="getTechIcon(t).icon"
-                  size="sm"
-                  class="tech-icon"
-                  :style="{ color: getTechIcon(t).color }"
-                />
+                <font-awesome-icon :icon="getTechIcon(t).icon" size="sm" class="tech-icon"
+                  :style="{ color: getTechIcon(t).color }" />
                 {{ t }}
               </span>
             </div>
@@ -80,16 +69,6 @@
           </ul>
         </div>
 
-        <div class="section">
-          <h2>Features</h2>
-          <ul>
-            <li v-for="f in project.features" :key="f">
-              <VueFeather class="arrow-right" size="20" type="arrow-right" />{{
-                f
-              }}
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
 
@@ -235,7 +214,7 @@ export default {
 .project-detail {
   padding: 4rem 0;
   color: white;
-
+  min-height: 100vh;
   backdrop-filter: blur(1px);
 }
 
@@ -251,7 +230,8 @@ export default {
 
 .left-side {
   position: sticky;
-  top: 1rem; /* or 0 */
+  top: 1rem;
+  /* or 0 */
   height: fit-content;
 }
 
@@ -293,12 +273,12 @@ export default {
 }
 
 .brand-logo {
-  width: 65px;
+  width: auto;
   height: 65px;
   flex-shrink: 0;
 }
 
-.header > div {
+.header>div {
   flex-grow: 1;
   margin: 0;
   padding: 0;
@@ -425,19 +405,19 @@ export default {
 
 /* --- MOBILE RESPONSIVENESS FIX --- */
 @media (max-width: 768px) {
+
   /* Switch to single column */
   .detail-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    display: flex;
   }
 
   /* Ensure image comes first */
   .left-side {
-    order: 1;
+    flex: 1;
   }
 
   .right-side {
-    order: 2;
+    flex: 2;
   }
 
   /* Adjust sizing */
@@ -461,7 +441,8 @@ export default {
 
 /* 💡 NEW: Style for the Go Back button */
 .btn.go-back-btn {
-  display: block; /* Make it take full width of its container if needed, or inline-block */
+  display: block;
+  /* Make it take full width of its container if needed, or inline-block */
   padding: 0.5rem 1rem !important;
   background: none;
   border: none;

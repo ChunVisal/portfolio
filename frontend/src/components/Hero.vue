@@ -26,8 +26,7 @@
             <span class="line line-2 glitch" data-text="Experiences">
               <span>Experiences</span>
               <div class="">
-                <video src="/cambodiaflag.mp4" autoplay muted loop playsinline
-                  class="w-20 h-10 object-cover"></video>
+                <video src="/cambodiaflag.mp4" autoplay muted loop playsinline class="w-20 h-10 object-cover"></video>
               </div>
             </span>
           </h1>
@@ -59,27 +58,28 @@
 
           <div class="tech-items">
             <span class="tech-item">
-              <font-awesome-icon :icon="['fab', 'react']" style="color: #61dbfb" />
-              React
+              <i class="devicon-react-original colored"></i>
+              React JS
             </span>
 
             <span class="tech-item">
-              <font-awesome-icon :icon="['fab', 'vuejs']" style="color: #41b883" />
+              <i class="devicon-vuejs-plain colored"></i>
               Vue JS
             </span>
 
             <span class="tech-item">
-              <font-awesome-icon :icon="['fab', 'node-js']" style="color: #3c873a" />
+              <i class="devicon-nodejs-plain colored"></i>
               Node.js
             </span>
 
             <span class="tech-item">
-              <font-awesome-icon :icon="['fas', 'database']" style="color: #0078d4" />
+              <!-- sql -->
+              <i class="devicon-mysql-plain colored"></i>
               SQL
             </span>
 
             <span class="tech-item">
-              <font-awesome-icon :icon="['fas', 'fire']" style="color: #ffa611" />
+              <i class="devicon-firebase-plain colored"></i>
               Firebase
             </span>
           </div>
@@ -139,6 +139,8 @@
 </template>
 
 <script setup>
+import { getTechIcon } from "../data/techIcons";
+
 const scrollToProjects = () => {
   const projectsSection = document.getElementById("projects");
   projectsSection?.scrollIntoView({ behavior: "smooth" });
@@ -567,6 +569,12 @@ const scrollTofooter = () => {
   text-align: center;
   justify-content: center;
   align-items: center;
+}
+
+.tech-item i {
+  font-size: 18px;
+  /* Adjust size here */
+  margin-right: 3px;
 }
 
 .tech-item {

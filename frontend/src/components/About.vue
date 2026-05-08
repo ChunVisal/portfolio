@@ -28,22 +28,15 @@
         <div class="swap-wrapper">
           <transition name="fade">
             <!-- use currentIndex as key so Vue always transitions -->
-            <img
-              :src="hobbies[currentIndex]"
-              :key="currentIndex"
-              class="swap-image"
-              alt="hobby"
-              @click="openImage(hobbies[currentIndex])"
-            />
+            <img :src="hobbies[currentIndex]" :key="currentIndex" class="swap-image" alt="hobby"
+              @click="openImage(hobbies[currentIndex])" />
           </transition>
         </div>
       </div>
     </div>
 
     <!-- CENTERED CONTAINER -->
-    <div
-      class="about-container flex flex-col px-5 sm:px-10 sm:flex-row gap-3 sm:gap-10"
-    >
+    <div class="about-container flex flex-col px-5 sm:px-10 sm:flex-row gap-3 sm:gap-10">
       <!-- LEFT COLUMN -->
       <div class="left-col">
         <div class="about-left">
@@ -80,20 +73,10 @@
             <h2 class="section-header">Hobbies & Interests</h2>
             <div class="hobbies-scroll-wrapper">
               <div class="hobbies-grid">
-                <div
-                  class="hobby-item"
-                  v-for="(img, index) in hobbies"
-                  :key="'h1-' + index"
-                  @click="openImage(img)"
-                >
+                <div class="hobby-item" v-for="(img, index) in hobbies" :key="'h1-' + index" @click="openImage(img)">
                   <img :src="img" alt="" />
                 </div>
-                <div
-                  class="hobby-item"
-                  v-for="(img, index) in hobbies"
-                  :key="'h2-' + index"
-                  @click="openImage(img)"
-                >
+                <div class="hobby-item" v-for="(img, index) in hobbies" :key="'h2-' + index" @click="openImage(img)">
                   <img :src="img" alt="" />
                 </div>
               </div>
@@ -106,58 +89,38 @@
       <div class="right-col">
         <div class="content-section">
           <h2 class="section-header">Tech Arsenal</h2>
-
+          <!-- Tools & Platforms with Devicon -->
           <div class="tech-grid">
             <div class="tech-category">
               <div class="tech-category-header">Frontend</div>
               <div class="tech-items">
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fab', 'html5']"
-                    size="sm"
-                    :style="{ color: '#e34c26' }"
-                  />
+                  <i class="devicon-html5-plain colored"></i>
                   HTML
                 </div>
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fab', 'css3']"
-                    size="sm"
-                    :style="{ color: '#264de4' }"
-                  />
+                  <i class="devicon-css3-plain colored"></i>
                   CSS
                 </div>
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fab', 'vuejs']"
-                    size="sm"
-                    :style="{ color: '#42b883' }"
-                  />
+                  <i class="devicon-vuejs-plain colored"></i>
                   Vue
                 </div>
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fab', 'react']"
-                    size="sm"
-                    :style="{ color: '#61dafb' }"
-                  />
+                  <i class="devicon-react-original colored"></i>
                   React
                 </div>
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fab', 'js']"
-                    size="sm"
-                    :style="{ color: '#f7df1e' }"
-                  />
+                  <i class="devicon-javascript-plain colored"></i>
                   JavaScript
                 </div>
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fas', 'wind']"
-                    size="sm"
-                    :style="{ color: '#38bdf8' }"
-                  />
+                  <i class="devicon-tailwindcss-plain colored"></i>
                   Tailwind
+                </div>
+                <div class="tech-item">
+                  <i class="devicon-bootstrap-plain colored"></i>
+                  Bootstrap
                 </div>
               </div>
             </div>
@@ -165,35 +128,19 @@
               <div class="tech-category-header">Backend</div>
               <div class="tech-items">
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fab', 'node-js']"
-                    size="sm"
-                    :style="{ color: '#68a063' }"
-                  />
+                  <i class="devicon-nodejs-plain colored"></i>
                   Node.js
                 </div>
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fas', 'server']"
-                    size="sm"
-                    :style="{ color: '#a855f7' }"
-                  />
+                  <img src="https://cdn.freebiesupply.com/logos/large/2x/logo-javascript-logo-black-and-white.png" class="w-4 h-4" />
                   Express
                 </div>
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fas', 'database']"
-                    size="sm"
-                    :style="{ color: '#4ade80' }"
-                  />
+                  <i class="devicon-sqlite-plain colored"></i>
                   SQL
                 </div>
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fas', 'fire']"
-                    size="sm"
-                    :style="{ color: '#f97316' }"
-                  />
+                  <i class="devicon-firebase-plain colored"></i>
                   Firebase
                 </div>
               </div>
@@ -202,44 +149,37 @@
             <div class="tech-category">
               <div class="tech-category-header">Tools</div>
               <div class="tech-items">
+
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fas', 'bolt']"
-                    size="sm"
-                    :style="{ color: '#facc15' }"
-                  />
-                  Postman
+                  <i class="devicon-google-plain colored"></i>
+                  Google Tools
                 </div>
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fas', 'code']"
-                    size="sm"
-                    :style="{ color: '#3b82f6' }"
-                  />
-                  VS Code
+
+                  <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png" class="w-3.5 h-3.5" />
+                  Git/Github
                 </div>
+
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fab', 'figma']"
-                    size="sm"
-                    :style="{ color: '#a855f7' }"
-                  />
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" class="w-3.5 h-3.5" />
                   Figma
                 </div>
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fab', 'github']"
-                    size="sm"
-                    :style="{ color: '#fff' }"
-                  />
-                  Git/Github
+                  <i class="devicon-postman-plain colored"></i>
+                  Postman
+                </div>
+
+                <div class="tech-item">
+                  <i class="devicon-vscode-plain colored"></i>
+                  VS Code
+                </div>
+
+                <div class="tech-item">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnhOO5AFkxO-ekvEEueO--qU8hU3UDBm78ng&s" class="w-3.5 h-3.5" />
+                  Render
                 </div>
                 <div class="tech-item">
-                  <font-awesome-icon
-                    :icon="['fas', 'rocket']"
-                    size="sm"
-                    :style="{ color: '#fff' }"
-                  />
+                  <i class="devicon-railway-plain colored"></i>
                   Railway
                 </div>
               </div>
@@ -293,6 +233,8 @@ import gym from "../../public/hobbies/gym.png";
 import minecraft from "../../public/hobbies/minecraft.png";
 import music from "../../public/hobbies/music.png";
 import visal from "../../public/hobbies/visal.jpg";
+import residentevil from "../../public/hobbies/residentevil.png";
+import uniform from "../../public/hobbies/uniform.png";
 
 const hobbies = [
   car,
@@ -304,6 +246,8 @@ const hobbies = [
   minecraft,
   music,
   visal,
+  residentevil,
+  uniform,
 ];
 
 const currentIndex = ref(0);
@@ -469,10 +413,12 @@ function closeViewer() {
 
 /* ORB ANIMATION */
 @keyframes floatOrb {
+
   0%,
   100% {
     transform: translateY(0) scale(1);
   }
+
   50% {
     transform: translateY(15px) scale(1.03);
   }
@@ -524,6 +470,7 @@ function closeViewer() {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -644,10 +591,10 @@ function closeViewer() {
   border-radius: 5px;
   display: inline-flex;
   font-size: 0.9rem;
-  gap: 2px;
+  gap: 4px;
   margin-right: 9px;
   margin-top: 7px;
-  padding: 5px 10px;
+  padding: 2px 8px;
 }
 
 .tech-items {
@@ -714,7 +661,7 @@ function closeViewer() {
   object-fit: contain;
   border-radius: 12px;
 }
-  
+
 
 /* ---------------------------
    MEDIA QUERY
