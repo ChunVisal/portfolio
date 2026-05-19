@@ -1,36 +1,26 @@
-import apexmotor1 from "../assets/project/apexmotor1.png";
-import apexmotor2 from "../assets/project/apexmotor2.png";
-import apexmotor3 from "../assets/project/apexmotor3.png";
-import apexmotorLogo from "../assets/project/apexmotorlogo.png";
-
-import venubooking1 from "../assets/project/venubooking1.png";
-import venubooking2 from "../assets/project/venubooking2.png";
-import venubooking3 from "../assets/project/venubooking3.png";
-import venubookingLogo from "../assets/project/venubookinglogo.png";
-
-import visal from "../assets/project/visal.jpg";
-import uniform from "../../public/hobbies/uniform.png";
-import visallogo from "../assets/project/visallogo.png";
-import visalcode from "../assets/project/visalcode.png";
-
 export const projects = [
   {
     id: 1,
     title: "ApexMotor",
-    thumbnail: apexmotor1,
-    images: [apexmotor2, apexmotor3],
-    logoBrand: apexmotorLogo,
+    thumbnail:
+      "https://res.cloudinary.com/dexr27qho/image/upload/v1778568143/apexmotor1_eozypd.png",
+    images: [
+      "https://res.cloudinary.com/dexr27qho/image/upload/v1778568142/apexmotor3_aqecas.png",
+      "https://res.cloudinary.com/dexr27qho/image/upload/v1778568140/apexmotor2_qvctm6.png",
+    ],
+    logoBrand:
+      "https://res.cloudinary.com/dexr27qho/image/upload/v1778567950/apexmotorlogo_fosrpb.png",
     shortDescription:
       "Car marketplace where users can buy, sell, and explore vehicles with real-time updates.",
     longDescription:
       "ApexMotor is a modern car marketplace with secure Auth0 + Google login, full CRUD listings, real-time Firebase updates, Cloudinary image optimization, SEO, Google Analytics, and a custom domain. Connects buyers and sellers seamlessly.",
     tech: [
-      "React",
-      "Tailwind CSS",
-      "Firebase Realtime DB",
+      "Tailwind",
+      "Firebase",
+      "SEO",
       "Auth0 (Google Auth)",
       "Cloudinary",
-      "JWT",
+      "React",
       "Google Analytics",
       "Custom Domain",
     ],
@@ -64,21 +54,28 @@ export const projects = [
   {
     id: 2,
     title: "VenuBooking (Event Platform)",
-    thumbnail: venubooking1,
-    images: [venubooking2, venubooking3],
-    logoBrand: venubookingLogo,
+    thumbnail:
+      "https://res.cloudinary.com/dexr27qho/image/upload/v1778568316/venubooking1_h0tpnh.png",
+    images: [
+      "https://res.cloudinary.com/dexr27qho/image/upload/v1778568314/venubooking2_yqusxh.png",
+      "https://res.cloudinary.com/dexr27qho/image/upload/v1778568312/venubooking3_wtwcao.png",
+    ],
+    logoBrand:
+      "https://res.cloudinary.com/dexr27qho/image/upload/v1778568299/venubookinglogo_lw4qwo.png",
     shortDescription:
       "Full-stack event booking platform with secure payments and real-time ticket generation.",
     longDescription:
       "VenuBooking lets users discover events, book tickets, and pay online. Event organizers can create and manage events. Built from scratch with React, Node.js, PostgreSQL, and Stripe.",
     tech: [
-      "React (Vite)",
-      "Node.js (Express)",
-      "PostgreSQL (Neon)",
-      "Tailwind CSS",
-      "Stripe API",
+      "React",
+      "Express",
+      "SQL",
+      "Tailwind",
+      "Stripe",
       "Cloudinary",
-      "Render / Netlify",
+      "Render",
+      "Netlify",
+      "Neon",
     ],
     features: [
       "Secure user auth (Email + Google 0Auth)",
@@ -109,14 +106,20 @@ export const projects = [
   {
     id: 3,
     title: "Portfolio - Chun Visal",
-    thumbnail: visal,
-    images: [visal, visalcode],
-    logoBrand: visallogo,
+    thumbnail:
+      "https://res.cloudinary.com/dexr27qho/image/upload/v1779154813/176c5b7d-2a51-4721-8cd0-04e2a3b7de6a.png",
+    images: [
+      "https://res.cloudinary.com/dexr27qho/image/upload/v1779154813/176c5b7d-2a51-4721-8cd0-04e2a3b7de6a.png",
+      "https://res.cloudinary.com/dexr27qho/image/upload/v1778859950/mern-stack-explained_szswra.webp",
+      "https://res.cloudinary.com/dexr27qho/image/upload/v1778568618/uniform-CUiPMJwT_naq5zj.jpg",
+    ],
+    logoBrand:
+      "https://res.cloudinary.com/dexr27qho/image/upload/v1778859324/seo-preview_bk78k6.png",
     shortDescription:
       "Personal portfolio website showcasing my skills, projects, and journey as a developer.",
     longDescription:
       "My personal portfolio built with Vue 3, GSAP animations, and Tailwind CSS. Features smooth page transitions, dynamic project routing, and a modern responsive layout. Optimized for SEO with meta tags and Google Console integration to improve discoverability. The site reflects my design philosophy: clean, fast, and user-friendly.",
-    tech: ["Vue 3", "GSAP", "Tailwind CSS", "Vue Router", "SEO"],
+    tech: ["Vue", "GSAP", "Tailwind", "SEO", "Cloudinary", "Custom Domain"],
     features: [
       "GSAP scroll animations",
       "Smooth page transitions",

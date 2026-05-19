@@ -8,50 +8,25 @@
     </h1>
 
     <div class="projects-grid">
-      <div
-        v-for="(project, index) in projects"
-        :key="project.id"
-        class="project-card-wrapper"
-        @mouseenter="!isMobile ? (active = index) : null"
-        @mouseleave="!isMobile ? (active = null) : null"
-      >
-        <RouterLink
-          :to="`/project/${project.id}`"
-          class="interactive-card"
-          @mousemove="(e) => !isMobile && handleMouseMove(e, index)"
-          @mouseleave="() => !isMobile && handleMouseLeave(index)"
-          :style="{ transform: cardTransforms[index] }"
-        >
+      <div v-for="(project, index) in projects" :key="project.id" class="project-card-wrapper"
+        @mousemove="(e) => !isMobile && handleMouseMove(e, index)"
+        @mouseleave="() => !isMobile && handleMouseLeave(index)" :style="{ transform: cardTransforms[index] }">
+        <RouterLink :to="`/project/${project.id}`" class="interactive-card"
+          :style="{ transform: cardTransforms[index] }">
           <span class="project-status">
-            <VueFeather
-              type="circle"
-              :fill="project.status === 'Completed' ? 'green' : 'yellow'"
-              :stroke="project.status === 'Completed' ? 'green' : 'yellow'"
-              size="12"
-            />
+            <VueFeather type="circle" :fill="project.status === 'Completed' ? 'green' : 'yellow'"
+              :stroke="project.status === 'Completed' ? 'green' : 'yellow'" size="12" />
             {{ project.status }}
           </span>
-
           <img :src="project.img" alt="Projects" class="card-image" />
         </RouterLink>
 
-        <div
-          class="panel"
-          :class="{ 'panel-mobile-visible': isMobile }"
-          v-if="active === index || isMobile"
-        >
+        <div class="panel" :class="{ 'panel-mobile-visible': isMobile }" v-if="active === index || isMobile">
           <h2 class="project-title">{{ project.title }}</h2>
           <p class="project-description">{{ project.description }}</p>
           <ul class="project-tech-stack">
             <li v-for="tech in project.tech" :key="tech">
-              <font-awesome-icon
-                :icon="techIcons[tech]"
-                size="sm"
-                :style="{
-                  color: techColors[tech],
-                  marginRight: '6px',
-                }"
-              />
+              <img :src="getTechIconUrl(tech)" class="tech-icon-img" :alt="tech" />
               {{ tech }}
             </li>
           </ul>
@@ -66,10 +41,11 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import Teackstack from "../components/Teackstack.vue";
+import { techIcons } from "../data/techIcons";
 
-import apexmotor from "../../public/projects/apexmotor.png";
-import venubooking from "../../public/projects/venubooking.png";
-import portfolio from "../../public/projects/portfolio.png";
+const apexmotor = "https://res.cloudinary.com/dexr27qho/image/upload/v1778567949/apexmotor_rvjahl.png";
+const venubooking = "https://res.cloudinary.com/dexr27qho/image/upload/v1778568319/venubooking_flkkd6.png";
+const portfolio = "https://res.cloudinary.com/dexr27qho/image/upload/v1778568375/portfolio_kh7emx.png";
 
 const projects = [
   {
@@ -100,25 +76,6 @@ const projects = [
     status: "Completed",
   },
 ];
-
-const techIcons = {
-  React: ["fab", "react"],
-  Tailwind: ["fas", "wind"],
-  Firebase: ["fas", "fire"],
-  Node: ["fab", "node-js"],
-  Vue: ["fab", "vuejs"],
-  GSAP: ["fas", "bolt"],
-  Mysql: ["fas", "database"],
-};
-
-const techColors = {
-  React: "#61dafb",
-  Tailwind: "#38bdf8",
-  Firebase: "#f97316",
-  Node: "#68a063",
-  Vue: "#42b883",
-  Mysql: "#00758F",
-};
 
 const active = ref(null);
 const isMobile = ref(false);
@@ -185,7 +142,7 @@ const handleMouseLeave = (index) => {
   margin-top: 2rem;
   display: grid;
   gap: 2rem;
-  /* moblie 2 and pc 3 */
+  /* mobile 2 and pc 3 */
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 }
 
@@ -202,7 +159,7 @@ const handleMouseLeave = (index) => {
 .card-image {
   width: 100%;
   height: 100%;
-  object-fit: contain; 
+  object-fit: contain;
   transition: filter 0.25s ease;
 }
 
@@ -211,7 +168,8 @@ const handleMouseLeave = (index) => {
   filter: drop-shadow(0 0 12px rgba(213, 213, 255, 0.189));
 }
 
-.projects-title :nth-child(2), :nth-child(4) {
+.projects-title :nth-child(2),
+:nth-child(4) {
   font-weight: 700;
   letter-spacing: -0.02em;
   background: linear-gradient(135deg, #667eea, #764ba2);
@@ -252,17 +210,19 @@ const handleMouseLeave = (index) => {
     opacity: 0;
     transform: translateY(0);
   }
+
   to {
     opacity: 1;
     transform: translateY(10px);
   }
 }
 
-/* project-status at right top realitive */
+/* project-status at right top relative */
 .project-status {
   position: absolute;
   display: flex;
-  align-items: center; /* vertical center */
+  align-items: center;
+  /* vertical center */
   justify-content: center;
   gap: 5px;
   top: 10px;
@@ -327,10 +287,12 @@ const handleMouseLeave = (index) => {
     padding: 15px 10px;
     border-radius: 10px;
   }
+
   .panel {
     background: none;
     backdrop-filter: none;
   }
+
   .interactive-card {
     border-radius: 10px 10px 0 0;
     background: rgba(255, 255, 255, 0.1);

@@ -5,19 +5,20 @@
         <RouterLink to="/" class="btn go-back-btn">
           ← Back to Projects
         </RouterLink>
-        <img :src="activeImage" class="main-img" @click="openModal" />
-
-        <div class="gallery">
-          <img v-for="img in allProjectImages" :src="img" :key="img" @click="activeImage = img" class="thumb" />
+        <div class="image-container">
+          <img :src="activeImage" class="main-img" @click="openModal" />
         </div>
 
-        <div class="section mt-4">
+        <div class="gallery">
+          <img v-for="img in allProjectImages" :src="img" :key="img" @click="activeImage = img; scrollToTop()"
+            class="thumb" />
+        </div>
+
+        <div class="section">
           <h2>Features</h2>
           <ul>
             <li v-for="f in project.features" :key="f">
-              <VueFeather class="arrow-right" size="20" type="arrow-right" />{{
-                f
-              }}
+              <VueFeather class="arrow-right" size="20" type="arrow-right" />{{ f }}
             </li>
           </ul>
         </div>
@@ -35,8 +36,6 @@
 
         <div class="links">
           <a v-if="project.demo" :href="project.demo" target="_blank" class="btn primary">Live Demo</a>
-          <div></div>
-
           <a v-if="project.github" :href="project.github" target="_blank" class="btn secondary">GitHub</a>
         </div>
 
@@ -45,8 +44,7 @@
             <h2>Technologies</h2>
             <div class="tags">
               <span v-for="t in project.tech" :key="t">
-                <font-awesome-icon :icon="getTechIcon(t).icon" size="sm" class="tech-icon"
-                  :style="{ color: getTechIcon(t).color }" />
+                <img :src="getTechIconUrl(t)" class="tech-icon-img" :alt="t" />
                 {{ t }}
               </span>
             </div>
@@ -62,19 +60,16 @@
           <h2>What I Did</h2>
           <ul>
             <li v-for="l in project.whatILearned" :key="l">
-              <VueFeather class="arrow-right" size="20" type="arrow-right" />{{
-                l
-              }}
+              <VueFeather class="arrow-right" size="20" type="arrow-right" />{{ l }}
             </li>
           </ul>
         </div>
-
       </div>
     </div>
 
     <div v-if="showModal" class="lightbox-overlay" @click.self="closeModal">
       <div class="lightbox-content">
-        <button @click="closeModal" class="lightbox-close">X</button>
+        <button @click="closeModal" class="lightbox-close">✕</button>
         <img :src="activeImage" class="lightbox-img" />
       </div>
     </div>
@@ -84,6 +79,7 @@
 <script>
 import { projects } from "../data/project.js";
 import VueFeather from "vue-feather";
+import { techIcons } from "../data/techIcons.js";
 import { useHead } from "@vueuse/head";
 
 export default {
@@ -109,91 +105,43 @@ export default {
     this.project = foundProject;
     this.activeImage = this.project.thumbnail;
 
-    /* =========================
-       ✅ SEO SETUP (THE FIX)
-    ========================== */
     useHead({
       title: `${this.project.title} | Chun Visal`,
       meta: [
-        {
-          name: "description",
-          content:
-            this.project.shortDescription || this.project.longDescription,
-        },
-
+        { name: "description", content: this.project.shortDescription || this.project.longDescription },
         { property: "og:type", content: "website" },
-        {
-          property: "og:title",
-          content: `${this.project.title} | Chun Visal`,
-        },
-        {
-          property: "og:description",
-          content: this.project.shortDescription,
-        },
-        {
-          property: "og:image",
-          content: this.project.thumbnail,
-        },
-        {
-          property: "og:url",
-          content: `https://chunvisal.pro/project/${this.project.id}`,
-        },
-
+        { property: "og:title", content: `${this.project.title} | Chun Visal` },
+        { property: "og:description", content: this.project.shortDescription },
+        { property: "og:image", content: this.project.thumbnail },
+        { property: "og:url", content: `https://chunvisal.pro/project/${this.project.id}` },
         { name: "twitter:card", content: "summary_large_image" },
-        {
-          name: "twitter:title",
-          content: `${this.project.title} | Chun Visal`,
-        },
-        {
-          name: "twitter:description",
-          content: this.project.shortDescription,
-        },
-        {
-          name: "twitter:image",
-          content: this.project.thumbnail,
-        },
+        { name: "twitter:title", content: `${this.project.title} | Chun Visal` },
+        { name: "twitter:description", content: this.project.shortDescription },
+        { name: "twitter:image", content: this.project.thumbnail },
       ],
-      link: [
-        {
-          rel: "canonical",
-          href: `https://chunvisal.pro/project/${this.project.id}`,
-        },
-      ],
+      link: [{ rel: "canonical", href: `https://chunvisal.pro/project/${this.project.id}` }],
     });
   },
 
   computed: {
     allProjectImages() {
       if (!this.project) return [];
-
       const images = new Set();
       if (this.project.thumbnail) images.add(this.project.thumbnail);
-
       if (Array.isArray(this.project.images)) {
         this.project.images.forEach((img) => img && images.add(img));
       }
-
       return Array.from(images);
     },
   },
 
   methods: {
-    getTechIcon(techName) {
-      const map = {
-        react: { icon: ["fab", "react"], color: "#61DAFB" },
-        tailwind: { icon: ["fas", "wind"], color: "#06B6D4" },
-        firebase: { icon: ["fas", "fire"], color: "#FFCA28" },
-        node: { icon: ["fas", "server"], color: "#68A063" },
-        vue: { icon: ["fab", "vuejs"], color: "#4FC08D" },
-        gsap: { icon: ["fas", "bolt"], color: "#88CE02" },
-      };
+    getTechIconUrl(techName) {
+      return techIcons[techName]?.url || "";
+    },
 
-      return (
-        map[techName.toLowerCase()] || {
-          icon: ["fas", "star"],
-          color: "#888",
-        }
-      );
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     },
 
     openModal() {
@@ -208,65 +156,75 @@ export default {
   },
 };
 </script>
-
-<style>
-/* --- BASE STYLES --- */
+<style scoped>
 .project-detail {
-  padding: 4rem 0;
+  width: 100%;
+  max-width: 100%;
+  padding: 60px 20px;
   color: white;
-  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  background: transparent;
   backdrop-filter: blur(1px);
+
 }
 
 .detail-container {
   max-width: 1200px;
-  width: 92%;
-  margin: auto;
-  display: grid;
-  /* Desktop two-column layout */
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 2.5rem;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
+/* LEFT SIDE */
 .left-side {
-  position: sticky;
-  top: 1rem;
-  /* or 0 */
-  height: fit-content;
+  flex: 1.2;
+  min-width: 280px;
+}
+
+.image-container {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .main-img {
   width: 100%;
-  border-radius: 8px;
-  margin-bottom: 0.8rem;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
   cursor: pointer;
 }
 
 .gallery {
-  display: flex;
-  gap: 0.6rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 15px 0;
 }
 
 .thumb {
-  width: 30%;
-  border-radius: 6px;
-  opacity: 0.7;
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
   cursor: pointer;
-  transition: 0.2s;
 }
 
-.thumb:hover {
-  opacity: 1;
-}
-
+/* RIGHT SIDE */
 .right-side {
+  flex: 0.8;
+  min-width: 280px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 20px;
 }
 
 .header {
-  padding: 0.5rem 0rem;
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -278,98 +236,117 @@ export default {
   flex-shrink: 0;
 }
 
-.header>div {
-  flex-grow: 1;
-  margin: 0;
-  padding: 0;
-}
-
 .title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.4;
+  font-size: 1.2rem;
 }
 
 .short {
-  color: rgba(255, 255, 255, 0.75);
-  margin: 0;
-  line-height: 1;
+  color: #bbb;
+  font-size: 0.9rem;
 }
 
 .meta {
-  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.55);
-  margin: 0;
-  line-height: 2;
+  margin: 4px 0 0;
+  padding: 0;
+  line-height: 1.2;
 }
 
 .links {
   display: flex;
-  gap: 0.4rem;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .btn {
-  padding: 0.4rem 1.3rem !important;
-  border-radius: 5px !important;
-  font-size: 0.2rem;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
   font-weight: 600;
-  transition: 0.2s;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .btn.primary {
   background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
 }
 
 .btn.secondary {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(2px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
 }
+
+.btn.go-back-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  padding: 0;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn.go-back-btn:hover {
+  color: white;
+}
+
 
 .section h2 {
   font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 0.6rem;
+  letter-spacing: 1px;
+  color: #aaa;
+  margin-bottom: 10px;
 }
 
 .tags {
   display: flex;
-  gap: 0.5rem;
+  gap: 8px;
   flex-wrap: wrap;
-  text-align: center;
 }
 
 .tags span {
-  padding: 0.35rem 0.8rem !important;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 6px;
-  font-size: 0.9rem;
-  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.tech-icon-img {
+  width: 16px;
+  height: 16px;
 }
 
 .section ul {
-  margin: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 .section ul li {
-  margin-bottom: 0.2rem;
-  color: rgba(255, 255, 255, 0.8);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: #ccc;
 }
 
-/* --- LIGHTBOX/MODAL STYLES --- */
+/* LIGHTBOX */
 .lightbox-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -384,79 +361,87 @@ export default {
 
 .lightbox-img {
   max-width: 100%;
-  max-height: 100%;
-  display: block;
+  max-height: 90vh;
+  object-fit: contain;
   border-radius: 8px;
 }
 
 .lightbox-close {
   position: absolute;
-  top: -30px;
-  right: -10px;
-  background: gray;
+  top: -40px;
+  right: -40px;
+  background: #333;
   border: none;
-  color: black;
-  padding: 0px 10px;
+  color: white;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
-  z-index: 1001;
 }
 
-/* --- MOBILE RESPONSIVENESS FIX --- */
+/* MOBILE */
 @media (max-width: 768px) {
-
-  /* Switch to single column */
   .detail-container {
-    display: flex;
+    flex-direction: column;
+    gap: 30px;
   }
 
-  /* Ensure image comes first */
   .left-side {
-    flex: 1;
+    flex: auto;
   }
 
-  .right-side {
-    flex: 2;
+  .main-img {
+    max-height: 300px;
   }
 
-  /* Adjust sizing */
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .thumb {
+    height: 60px;
+  }
+
   .brand-logo {
-    width: 50px;
-    height: 50px;
+    height: 45px;
   }
 
   .title {
     font-size: 1.4rem;
   }
+
+  .lightbox-close {
+    top: -50px;
+    right: 0;
+  }
 }
 
-.btn {
-  padding: 0.4rem 1.3rem !important;
-  border-radius: 5px !important;
-  font-size: 0.2rem;
-  font-weight: 600;
-  transition: 0.2s;
-}
+@media (max-width: 480px) {
+  .project-detail {
+    padding: 40px 15px;
+  }
 
-/* 💡 NEW: Style for the Go Back button */
-.btn.go-back-btn {
-  display: block;
-  /* Make it take full width of its container if needed, or inline-block */
-  padding: 0.5rem 1rem !important;
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 1rem;
-  font-weight: 400;
-  text-align: left;
-  margin-bottom: 0.5rem;
-  cursor: pointer;
-  transition: color 0.2s;
-}
+  .main-img {
+    max-height: 220px;
+  }
 
-.btn.go-back-btn:hover {
-  color: white;
-  text-decoration: underline;
+  .thumb {
+    height: 50px;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .btn {
+    padding: 6px 15px;
+    font-size: 0.75rem;
+  }
 }
 </style>

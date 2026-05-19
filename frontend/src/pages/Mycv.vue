@@ -1,6 +1,7 @@
 <script setup>
 import { ref, } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { techIcons } from '../data/techIcons';
 
 // full screen images
 const showPreview = ref(false);
@@ -9,16 +10,62 @@ const closePreview = () => {
     showPreview.value = false;
 }
 
+const iconKeyMap = {
+    HTML: "HTML5",
+    CSS: "CSS3",
+    JavaScript: "JavaScript",
+    React: "React",
+    "React.js": "React",
+    Vue: "Vue",
+    "Vue.js": "Vue",
+    Tailwind: "Tailwind",
+    "Tailwind CSS": "Tailwind",
+    Bootstrap: "Bootstrap",
+    "Node.js": "Node.js",
+    Express: "Express",
+    "Express.js": "Express",
+    SQL: "SQL",
+    Firebase: "Firebase",
+    Postman: "Postman",
+    "VS Code": "VSCode",
+    Figma: "Figma",
+    GitHub: "GitHub",
+    Netlify: "Netlify",
+    Railway: "Railway"
+};
+
+const getTech = (tech) => {
+    const key = iconKeyMap[tech] || tech;
+    const icon = techIcons[key];
+    return {
+        name: tech,
+        url: icon?.url || "",
+        info: icon?.info || "No information available",
+        icon: icon?.icon || null,
+        color: icon?.color || "text-gray-400"
+    };
+};
+
+const frontendTech = ["HTML", "CSS", "JavaScript", "React", "Vue", "Tailwind", "Bootstrap"];
+const backendTech = ["Node.js", "Express", "SQL", "Firebase"];
+const tools = ["Postman", "VS Code", "Figma", "GitHub", "Netlify", "Railway"];
+
+const skills = {
+    frontend: frontendTech.map(getTech),
+    backend: backendTech.map(getTech),
+    tools: tools.map(getTech)
+};
+
 const macDots = [
     'bg-[#ff5f57]', // Red
     'bg-[#ffbd2e]', // Yellow
     'bg-[#28c840]'  // Green
 ];
 
-import apexmotorLogo from "../assets/project/apexmotorlogo.png";
-import venubookingLogo from "../assets/project/venubookinglogo.png";
-import portfolioLogo from "../assets/project/visallogo.png";
-import uniform from "../../public/hobbies/uniform.png";
+const apexmotorLogo = "https://res.cloudinary.com/dexr27qho/image/upload/v1778567950/apexmotorlogo_fosrpb.png";
+const venubookingLogo = "https://res.cloudinary.com/dexr27qho/image/upload/v1778568299/venubookinglogo_lw4qwo.png";
+const portfolioLogo = "https://res.cloudinary.com/dexr27qho/image/upload/v1778859324/seo-preview_bk78k6.png";
+const uniform = "https://res.cloudinary.com/dexr27qho/image/upload/v1778568199/uniform_way5oy.jpg";
 
 const projects = [
     {
@@ -49,32 +96,6 @@ const projects = [
         gridStyle: "md:col-span-1 md:row-span-1 lg:col-span-1 lg:row-span-2"
     },
 ];
-
-const skills = {
-    frontend: [
-        { icon: ['fab', 'html5'], name: 'HTML', color: 'text-orange-400' },
-        { icon: ['fab', 'css3'], name: 'CSS', color: 'text-blue-400' },
-        { icon: ['fab', 'js'], name: 'JavaScript', color: 'text-yellow-300' },
-        { icon: ['fab', 'react'], name: 'React', color: 'text-sky-300' },
-        { icon: ['fab', 'vuejs'], name: 'Vue', color: 'text-green-300' },
-        { icon: ['fas', 'wind'], name: 'Tailwind', color: 'text-cyan-300' },
-        { icon: ['fab', 'bootstrap'], name: 'Bootstrap', color: 'text-purple-300' }
-    ],
-    backend: [
-        { icon: ['fab', 'node-js'], name: 'Node.js', color: 'text-green-400' },
-        { icon: ['fas', 'server'], name: 'Express', color: 'text-[#c084fc]' },
-        { icon: ['fas', 'database'], name: 'SQL', color: 'text-yellow-300' },
-        { icon: ['fas', 'fire'], name: 'Firebase', color: 'text-orange-400' }
-    ],
-    tools: [
-        { icon: ['fas', 'bolt'], name: 'Postman', color: 'text-orange-400' },
-        { icon: ['fas', 'code'], name: 'VS Code', color: 'text-blue-400' },
-        { icon: ['fab', 'figma'], name: 'Figma', color: 'text-pink-300' },
-        { icon: ['fab', 'github'], name: 'Git / GitHub', color: 'text-white' },
-        { icon: ['fas', 'cloud'], name: 'Netlify', color: 'text-cyan-300' },
-        { icon: ['fas', 'rocket'], name: 'Railway', color: 'text-white' }
-    ]
-};
 
 const educationData = [
     {
@@ -329,7 +350,7 @@ const softSkills = [
                     <div class="ml-12 sm:ml-20 flex flex-wrap gap-2 sm:gap-3">
                         <div v-for="skill in skills.frontend" :key="skill.name"
                             class="flex items-center gap-1 px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg bg-[#3b2b5f]/40 border border-[#6e5a9c]/30 text-xs">
-                            <font-awesome-icon :icon="skill.icon" :class="skill.color" />
+                            <img :src="skill.url" class="w-4 h-4" :alt="skill.name">
                             <span class="text-[#e5d8ff]">{{ skill.name }}</span>
                         </div>
                     </div>
@@ -351,7 +372,7 @@ const softSkills = [
                     <div class="ml-12 sm:ml-20 flex flex-wrap gap-2 sm:gap-3">
                         <div v-for="skill in skills.backend" :key="skill.name"
                             class="flex items-center gap-1 px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg bg-[#3b2b5f]/40 border border-[#6e5a9c]/30 text-xs">
-                            <font-awesome-icon :icon="skill.icon" :class="skill.color" />
+                            <img :src="skill.url" class="w-4 h-4" :alt="skill.name">
                             <span class="text-[#e5d8ff]">{{ skill.name }}</span>
                         </div>
                     </div>
@@ -374,7 +395,7 @@ const softSkills = [
                     <div class="ml-12 sm:ml-20 flex flex-wrap gap-2 sm:gap-3">
                         <div v-for="tool in skills.tools" :key="tool.name"
                             class="flex items-center gap-1 px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg bg-[#3b2b5f]/40 border border-[#6e5a9c]/30 text-xs">
-                            <font-awesome-icon :icon="tool.icon" :class="tool.color" />
+                            <img :src="tool.url" class="w-4 h-4" :alt="tool.name">
                             <span class="text-[#e5d8ff]">{{ tool.name }}</span>
                         </div>
                     </div>
@@ -513,7 +534,7 @@ const softSkills = [
                             </span>
 
                             <p v-if="item.details" class="text-xs sm:text-sm text-[#96a0b5] mt-1 mb-2">{{ item.details
-                            }}</p>
+                                }}</p>
                         </div>
                     </div>
                 </div>
@@ -550,7 +571,7 @@ const softSkills = [
 
                 <div v-for="(lang, index) in languageArray" :key="lang.language" class="flex gap-4">
                     <span class="text-[#4b5563] select-none w-5 text-right">{{ 54 + educationData.length + index
-                    }}</span>
+                        }}</span>
                     <div class="ml-10 sm:ml-16"> <span class="text-white">{ </span>
                         <span class="text-sky-400 text-xs sm:text-sm">language</span><span class="text-white">: </span>
                         <span class="text-green-300 text-xs sm:text-sm">"{{ lang.language }}"</span><span

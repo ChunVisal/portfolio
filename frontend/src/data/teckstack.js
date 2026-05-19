@@ -1,5 +1,5 @@
 // Map technology names to Font Awesome icons, colors, and detailed, experience-based information
-const techMap = {
+export const techMap = {
   // Frontend
   HTML: {
     icon: ["fab", "html5"],
@@ -141,7 +141,5 @@ const techMap = {
     icon: ["fas", "cloud"],
     color: "#00C7B7",
     info: "Neon is being explored for its real-time database capabilities and seamless integration with modern web applications.",
-  }
+  },
 };
-
-export default techMap

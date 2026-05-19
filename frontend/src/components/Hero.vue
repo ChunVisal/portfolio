@@ -26,7 +26,7 @@
             <span class="line line-2 glitch" data-text="Experiences">
               <span>Experiences</span>
               <div class="">
-                <video src="/cambodiaflag.mp4" autoplay muted loop playsinline class="w-20 h-10 object-cover"></video>
+                <video :src="flag" autoplay muted loop playsinline class="w-20 h-10 object-cover"></video>
               </div>
             </span>
           </h1>
@@ -57,31 +57,10 @@
           <div class="tech-label">Tech I work with:</div>
 
           <div class="tech-items">
-            <span class="tech-item">
-              <i class="devicon-react-original colored"></i>
-              React JS
-            </span>
-
-            <span class="tech-item">
-              <i class="devicon-vuejs-plain colored"></i>
-              Vue JS
-            </span>
-
-            <span class="tech-item">
-              <i class="devicon-nodejs-plain colored"></i>
-              Node.js
-            </span>
-
-            <span class="tech-item">
-              <!-- sql -->
-              <i class="devicon-mysql-plain colored"></i>
-              SQL
-            </span>
-
-            <span class="tech-item">
-              <i class="devicon-firebase-plain colored"></i>
-              Firebase
-            </span>
+            <div v-for="tech in MyProTech" :key="tech" class="tech-item">
+              <img :src="getTechUrl(tech)" class="w-4 h-4" :alt="tech" />
+              {{ tech }}
+            </div>
           </div>
         </div>
       </div>
@@ -139,7 +118,13 @@
 </template>
 
 <script setup>
-import { getTechIcon } from "../data/techIcons";
+import { techIcons } from "../data/techIcons";
+const flag = "https://res.cloudinary.com/dexr27qho/video/upload/v1778568584/cambodiaflag_vbo8ur.mp4";
+
+const MyProTech = ["React", "Vue", "Node.js", "SQL", "Firebase"];
+const getTechUrl = (tech) => {
+  return techIcons[tech]?.url || "";
+};
 
 const scrollToProjects = () => {
   const projectsSection = document.getElementById("projects");

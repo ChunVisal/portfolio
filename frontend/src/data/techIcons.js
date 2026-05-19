@@ -1,137 +1,120 @@
-// devicon-config.js
-// Devicon CDN: https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css
-
+// src/data/techIcons.js
 export const techIcons = {
-  // Languages
+  // programming languages
   C: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg",
-    class: "devicon-c-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862867/c-program-icon_sytfhc.png",
+    knowledge: "",
   },
   "C++": {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg",
-    class: "devicon-cplusplus-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862704/C_rxabqm.svg",
   },
   PHP: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg",
-    class: "devicon-php-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862702/PHP_agcsph.svg",
   },
   Laravel: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg",
-    class: "devicon-laravel-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862702/Laravel_mzful1.svg",
   },
   Flutter: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg",
-    class: "devicon-flutter-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862702/Flutter_p4gzbt.svg",
   },
   JavaScript: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
-    class: "devicon-javascript-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862701/JavaScript_bhquzg.svg",
   },
   "Node.js": {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
-    class: "devicon-nodejs-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862701/Node.js_yz9knc.svg",
   },
   Express: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg",
-    class: "devicon-express-original",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778860390/logo-javascript-logo-black-and-white_ptcq3l.png",
   },
   Firebase: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg",
-    class: "devicon-firebase-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862699/Firebase_qbzl7b.svg",
   },
   SQL: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg",
-    class: "devicon-azuresqldatabase-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862700/SQL_izxjjf.svg",
   },
   HTML5: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
-    class: "devicon-html5-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862700/HTML5_rcibt9.svg",
   },
   CSS3: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
-    class: "devicon-css3-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862697/CSS3_am2yoy.svg",
   },
   Tailwind: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
-    class: "devicon-tailwindcss-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862699/Tailwind_k9prkv.svg",
   },
   Bootstrap: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg",
-    class: "devicon-bootstrap-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862697/Bootstrap_adqjdl.svg",
   },
   React: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-    class: "devicon-react-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862697/React_v7stey.svg",
   },
   Vue: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg",
-    class: "devicon-vuejs-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862697/Vue_fjm28c.svg",
   },
 
-  // Tools & Platforms
+  // tools
   Git: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
-    class: "devicon-git-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862697/Git_lhhafs.svg",
   },
   GitHub: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
-    class: "devicon-github-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778863036/github-white-icon_m46v7m.png",
   },
   Cloudinary: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudinary/cloudinary-original.svg",
-    class: "devicon-cloudinary-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862908/cloudinary-icon_mmgqbl.png",
   },
   Stripe: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/stripe/stripe-original.svg",
-    class: "devicon-stripe-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778917063/free-stripe-logo-icon-svg-download-png-498440_z75nb1.png",
   },
   VSCode: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
-    class: "devicon-vscode-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862697/VSCode_oe8yxw.svg",
   },
   "Android Studio": {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg",
-    class: "devicon-androidstudio-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778917218/android-studio-icon_lpbbiw.png",
   },
   Figma: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
-    class: "devicon-figma-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778860487/Figma-logo_jlhzxu.svg",
   },
   Postman: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg",
-    class: "devicon-postman-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862708/Postman_hdfl4d.svg",
   },
   Render: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/render/render-original.svg",
-    class: "devicon-render-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778863073/images_htcjxl.png",
   },
   Railway: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/railway/railway-original.svg",
-    class: "devicon-railway-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862707/Railway_g40yxy.svg",
   },
   Netlify: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/netlify/netlify-original.svg",
-    class: "devicon-netlify-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862707/Netlify_qfebaz.svg",
   },
   Neon: {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/neon/neon-original.svg",
-    class: "devicon-neon-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778863018/ea84af8d46d14179febb234fa36d87ec_lij9p7.png",
   },
-  "Google Cloud": {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg",
-    class: "devicon-googlecloud-plain",
+  Google: {
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862999/960px-Google_Favicon_2025.svg.png_d29oq9.png",
   },
   "Google Analytics": {
-    url: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg",
-    class: "devicon-google-plain",
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1779159338/google_analytics_image_logo_icon_168152_cw7eqb.png",
   },
-};
+  "Auth0 (Google Auth)": {
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1779160491/auth0-logo-vector_z216bz.svg",
+  },
+  "Custom Domain": {
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1779160257/1197414_ibzyjc.png",
+  },
+  GSAP: {
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1779160615/tweenmax.png.cf27916e926fbb328ff214f66b4c8429_pu1oyr.png",
+  },
+  SEO: {
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1779160756/3003511_zdjkwk.png",
+  },
 
-// Helper function to get icon data
-export const getTechIcon = (techName) => {
-  // Find matching key (case-insensitive)
-  const key = Object.keys(techIcons).find(
-    (k) => k.toLowerCase() === techName.toLowerCase(),
-  );
-  return key ? techIcons[key] : null;
+  // AI / Future
+  ChatGPT: {
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862958/images_f2ycm1.png",
+  },
+  DeepSeek: {
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862971/1738626850244_fsmmqa.png",
+  },
+  Gemini: {
+    url: "https://res.cloudinary.com/dexr27qho/image/upload/v1778862983/google-gemini-icon_pxoz8j.png",
+  },
 };

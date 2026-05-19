@@ -94,54 +94,18 @@
             <div class="tech-category">
               <div class="tech-category-header">Frontend</div>
               <div class="tech-items">
-                <div class="tech-item">
-                  <i class="devicon-html5-plain colored"></i>
-                  HTML
-                </div>
-                <div class="tech-item">
-                  <i class="devicon-css3-plain colored"></i>
-                  CSS
-                </div>
-                <div class="tech-item">
-                  <i class="devicon-vuejs-plain colored"></i>
-                  Vue
-                </div>
-                <div class="tech-item">
-                  <i class="devicon-react-original colored"></i>
-                  React
-                </div>
-                <div class="tech-item">
-                  <i class="devicon-javascript-plain colored"></i>
-                  JavaScript
-                </div>
-                <div class="tech-item">
-                  <i class="devicon-tailwindcss-plain colored"></i>
-                  Tailwind
-                </div>
-                <div class="tech-item">
-                  <i class="devicon-bootstrap-plain colored"></i>
-                  Bootstrap
+                <div v-for="tech in frontendTech" :key="tech" class="tech-item">
+                  <img :src="getTechUrl(tech)" class="w-4 h-4" :alt="tech" />
+                  {{ tech }}
                 </div>
               </div>
             </div>
             <div class="tech-category">
               <div class="tech-category-header">Backend</div>
               <div class="tech-items">
-                <div class="tech-item">
-                  <i class="devicon-nodejs-plain colored"></i>
-                  Node.js
-                </div>
-                <div class="tech-item">
-                  <img src="https://cdn.freebiesupply.com/logos/large/2x/logo-javascript-logo-black-and-white.png" class="w-4 h-4" />
-                  Express
-                </div>
-                <div class="tech-item">
-                  <i class="devicon-sqlite-plain colored"></i>
-                  SQL
-                </div>
-                <div class="tech-item">
-                  <i class="devicon-firebase-plain colored"></i>
-                  Firebase
+                <div v-for="tech in backendTech" :key="tech" class="tech-item">
+                  <img :src="getTechUrl(tech)" class="w-4 h-4" :alt="tech" />
+                  {{ tech }}
                 </div>
               </div>
             </div>
@@ -149,38 +113,9 @@
             <div class="tech-category">
               <div class="tech-category-header">Tools</div>
               <div class="tech-items">
-
-                <div class="tech-item">
-                  <i class="devicon-google-plain colored"></i>
-                  Google Tools
-                </div>
-                <div class="tech-item">
-
-                  <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-white-icon.png" class="w-3.5 h-3.5" />
-                  Git/Github
-                </div>
-
-                <div class="tech-item">
-                 <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" class="w-3.5 h-3.5" />
-                  Figma
-                </div>
-                <div class="tech-item">
-                  <i class="devicon-postman-plain colored"></i>
-                  Postman
-                </div>
-
-                <div class="tech-item">
-                  <i class="devicon-vscode-plain colored"></i>
-                  VS Code
-                </div>
-
-                <div class="tech-item">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnhOO5AFkxO-ekvEEueO--qU8hU3UDBm78ng&s" class="w-3.5 h-3.5" />
-                  Render
-                </div>
-                <div class="tech-item">
-                  <i class="devicon-railway-plain colored"></i>
-                  Railway
+                <div v-for="tech in toolsTech" :key="tech" class="tech-item">
+                  <img :src="getTechUrl(tech)" class="w-4 h-4" :alt="tech" />
+                  {{ tech }}
                 </div>
               </div>
             </div>
@@ -224,30 +159,30 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
 
-import car from "../../public/hobbies/car.png";
-import coding from "../../public/hobbies/coding.png";
-import cybersecurity from "../../public/hobbies/cybersecurity.png";
-import fastandfurious from "../../public/hobbies/fastandfurious.png";
-import fortnite from "../../public/hobbies/fortnite.png";
-import gym from "../../public/hobbies/gym.png";
-import minecraft from "../../public/hobbies/minecraft.png";
-import music from "../../public/hobbies/music.png";
-import visal from "../../public/hobbies/visal.jpg";
-import residentevil from "../../public/hobbies/residentevil.png";
-import uniform from "../../public/hobbies/uniform.png";
+const car = "https://res.cloudinary.com/dexr27qho/image/upload/v1778568204/car_rocuow.png";
+const coding = "https://res.cloudinary.com/dexr27qho/image/upload/v1778568203/vscode_bppt60.png";
+const cybersecurity = "https://res.cloudinary.com/dexr27qho/image/upload/v1778568208/cybersecurity_mikfbg.png";
+const fastandfurious = "https://res.cloudinary.com/dexr27qho/image/upload/v1778568210/fastandfurious_qr9eoe.png";
+const fortnite = "https://res.cloudinary.com/dexr27qho/image/upload/v1778568189/fortnite_iap9gi.png";
+const gym = "https://res.cloudinary.com/dexr27qho/image/upload/v1778568191/gym_rgvthm.png";
+const music = "https://res.cloudinary.com/dexr27qho/image/upload/v1778568195/music_bkkgub.png";
+const visal = "https://res.cloudinary.com/dexr27qho/image/upload/v1778568199/uniform_way5oy.jpg";
+const cs = "https://res.cloudinary.com/dexr27qho/image/upload/v1778568206/coding_ime5fr.png";
+const residentevil = "https://res.cloudinary.com/dexr27qho/image/upload/v1778568197/residentevil_vdy1db.png";
+
+import { techIcons } from "../data/techIcons";
 
 const hobbies = [
   car,
   coding,
   cybersecurity,
   fastandfurious,
+  cs,
   fortnite,
   gym,
-  minecraft,
   music,
   visal,
   residentevil,
-  uniform,
 ];
 
 const currentIndex = ref(0);
@@ -255,7 +190,7 @@ const viewerImg = ref(null);
 let intervalId = null;
 
 onMounted(() => {
-  setInterval(() => {
+  intervalId = setInterval(() => {
     currentIndex.value = (currentIndex.value + 1) % hobbies.length;
   }, 3000);
 });
@@ -271,6 +206,16 @@ function openImage(img) {
 function closeViewer() {
   viewerImg.value = null;
 }
+
+// Define tech arrays
+const frontendTech = ["HTML5", "CSS3", "JavaScript", "Vue", "React", "Tailwind", "Bootstrap"];
+const backendTech = ["Node.js", "Express", "SQL", "Firebase"];
+const toolsTech = ["Git", "GitHub", "Figma", "Postman", "VSCode", "Render", "Railway", "Netlify", "Google"];
+
+const getTechUrl = (tech) => {
+  return techIcons[tech]?.url || "";
+};
+
 </script>
 
 <style>
