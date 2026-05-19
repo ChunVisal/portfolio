@@ -118,10 +118,6 @@ const handleImageError = (event) => {
   flex-shrink: 0;
 }
 
-.tech-card-container:hover {
-  z-index: 1000;
-}
-
 .tag {
   width: 100%;
   height: 100%;

@@ -35,8 +35,14 @@
         </div>
 
         <div class="links">
-          <a v-if="project.demo" :href="project.demo" target="_blank" class="btn primary">Live Demo</a>
-          <a v-if="project.github" :href="project.github" target="_blank" class="btn secondary">GitHub</a>
+          <a v-if="project.demo" :href="project.demo" target="_blank"
+            class="btn primary inline-flex items-center justify-center">
+            <span>Live Demo</span>
+            <VueFeather type="arrow-up-right" size="18" class="btn-icon" />
+          </a>
+          <a v-if="project.github" :href="project.github" target="_blank" class="btn secondary">
+            GitHub
+          </a>
         </div>
 
         <div class="section">

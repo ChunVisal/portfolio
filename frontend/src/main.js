@@ -1,6 +1,6 @@
-// src/main.ts
+// src/main.js
 import { createApp } from "vue";
-import { createHead } from '@vueuse/head'
+import { createHead } from "@vueuse/head";
 import App from "./App.vue";
 import router from "./router";
 import "./styles.css";
@@ -25,63 +25,23 @@ import {
   faTrain,
   faCloud,
   faRocket,
+  faEnvelope,
+  faStar,
 } from "@fortawesome/free-solid-svg-icons";
-import { faBootstrap, faTelegram } from "@fortawesome/free-brands-svg-icons";
 
-// BRAND ICONS
 import {
-  faHtml5,
-  faCss3,
-  faJs,
-  faReact,
-  faVuejs,
-  faNodeJs,
-  faGithub,
-  faGit,
-  faFigma,
-  faAws,
+  faBootstrap,
+  faTelegram,
   faLinkedin,
-  faGoogle,
+  faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 
-// SOLID
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-
-// SOLID ICONS
-import {
-  faDatabase,
-  faServer,
-  faFire,
-  faCode,
-  faBolt,
-  faWind,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
-
-// ADD TO LIBRARY
+// ADD TO LIBRARY (tech stack icons REMOVED)
 library.add(
-  faHtml5,
-  faCss3,
-  faJs,
-  faReact,
-  faVuejs,
-  faNodeJs,
-  faGit,
-  faFigma,
-  faAws,
-  faDatabase,
-  faServer,
-  faFire,
-  faCode,
-  faBolt,
-  faWind,
-  faStar,
-  faGithub,
   faLinkedin,
   faEnvelope,
   faDownload,
   faFileCode,
-  faDownload,
   faTerminal,
   faBootstrap,
   faPhone,
@@ -98,13 +58,14 @@ library.add(
   faRocket,
   faTelegram,
   faCloud,
-  faGoogle
+  faGithub,
+  faStar
 );
 
 const app = createApp(App);
-const head = createHead()
+const head = createHead();
 app.use(router);
-app.use(head)
+app.use(head);
 
 app.component(VueFeather.name, VueFeather);
 app.component("font-awesome-icon", FontAwesomeIcon);

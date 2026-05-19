@@ -9,8 +9,9 @@
 
     <div class="projects-grid">
       <div v-for="(project, index) in projects" :key="project.id" class="project-card-wrapper"
-        @mousemove="(e) => !isMobile && handleMouseMove(e, index)"
-        @mouseleave="() => !isMobile && handleMouseLeave(index)" :style="{ transform: cardTransforms[index] }">
+        @mouseenter="!isMobile ? (active = index) : null"
+        @mouseleave="() => { if (!isMobile) { active = null; handleMouseLeave(index); } }"
+        @mousemove="(e) => !isMobile && handleMouseMove(e, index)" :style="{ transform: cardTransforms[index] }">
         <RouterLink :to="`/project/${project.id}`" class="interactive-card"
           :style="{ transform: cardTransforms[index] }">
           <span class="project-status">
@@ -24,10 +25,11 @@
         <div class="panel" :class="{ 'panel-mobile-visible': isMobile }" v-if="active === index || isMobile">
           <h2 class="project-title">{{ project.title }}</h2>
           <p class="project-description">{{ project.description }}</p>
-          <ul class="project-tech-stack">
-            <li v-for="tech in project.tech" :key="tech">
-              <img :src="getTechIconUrl(tech)" class="tech-icon-img" :alt="tech" />
-              {{ tech }}
+          <ul class="project-tech-stack flex flex-wrap gap-2 mt-3 justify-center md:justify-start">
+            <li v-for="tech in project.tech" :key="tech"
+              class="inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-white/10 rounded-full text-xs">
+              <img :src="getTechIconUrl(tech)" class="w-4 h-4 object-contain" :alt="tech" />
+              <span>{{ tech }}</span>
             </li>
           </ul>
         </div>
@@ -63,7 +65,7 @@ const projects = [
     title: "VenuBooking",
     description:
       "An event ticket booking system with RESTful APIs, backend logic for reservations, and a relational database to manage users, events, and transactions.",
-    tech: ["React", "Node", "Tailwind", "Mysql"],
+    tech: ["React", "Node.js", "SQL", "Tailwind",],
     status: "Completed",
   },
   {
@@ -82,6 +84,11 @@ const isMobile = ref(false);
 
 const checkMobile = () => {
   isMobile.value = window.innerWidth < 640;
+};
+
+// Add this function
+const getTechIconUrl = (tech) => {
+  return techIcons[tech]?.url || "";
 };
 
 onMounted(() => {
@@ -163,6 +170,12 @@ const handleMouseLeave = (index) => {
   transition: filter 0.25s ease;
 }
 
+.tech-icon-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
 /* hover */
 .interactive-card:hover .card-image {
   filter: drop-shadow(0 0 12px rgba(213, 213, 255, 0.189));
@@ -193,7 +206,7 @@ const handleMouseLeave = (index) => {
   white-space: nowrap;
   transform: translateY(10px);
   animation: slide 0.2s ease;
-  background: rgba(41, 41, 41, 0.917);
+  background: rgba(41, 41, 41, 0.97);
   backdrop-filter: blur(2px);
   width: 100%;
   display: flex;
@@ -251,12 +264,8 @@ const handleMouseLeave = (index) => {
   font-size: clamp(0.9rem, 1.4vw, 1rem);
   color: white;
   list-style: none;
-  padding: 0;
-  margin: 0.5rem 0 0 0;
   display: flex;
   gap: 0.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 .project-tech-stack li {
@@ -282,6 +291,7 @@ const handleMouseLeave = (index) => {
     position: static;
     transform: none;
     animation: none;
+    z-index: 9999;
     width: 100%;
     margin-top: -10px;
     padding: 15px 10px;
@@ -296,6 +306,14 @@ const handleMouseLeave = (index) => {
   .interactive-card {
     border-radius: 10px 10px 0 0;
     background: rgba(255, 255, 255, 0.1);
+  }
+
+  .project-tech-stack {
+    justify-content: center;
+  }
+
+  .project-tech-stack li {
+    justify-content: center;
   }
 }
 </style>
